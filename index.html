@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cannabis &amp; Veterinary Reference</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #EFF2EA;
+    --panel: #F8FAF5;
+    --sidebar: #E4E9DD;
+    --ink: #1C2420;
+    --ink-soft: #4B5850;
+    --ink-faint: #7C877C;
+    --line: #C9D0BF;
+    --accent: #2F5D4E;
+    --accent-soft: #DCE6DD;
+    --ochre: #8A6A22;
+    --ochre-soft: #EFE6CD;
+    --caution: #7A3B2E;
+    --caution-soft: #F1DFD9;
+    --focus: #2F5D4E;
+    --radius: 4px;
+    --shadow: 0 6px 20px rgba(28,36,32,0.10);
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    line-height: 1.55;
+  }
+  h1,h2,h3{ font-family:'Fraunces',Georgia,serif; font-weight:600; letter-spacing:-0.01em; margin:0; }
+  a{ color: var(--accent); }
+  p{ margin: 0; }
+  button{ font-family: inherit; }
+  ::selection{ background: var(--accent-soft); }
+  :focus-visible{ outline: 2px solid var(--focus); outline-offset: 2px; }
+  .visually-hidden{ position:absolute; left:-9999px; }
+  svg.icon{ width:1em; height:1em; flex-shrink:0; }
+
+  /* ---------- header ---------- */
+  header.top{
+    position: sticky; top:0; z-index: 20;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 14px clamp(16px, 4vw, 40px);
+    display: flex; align-items: center; gap: 18px;
+  }
+  .menu-toggle{
+    display:none;
+    background:none; border:1px solid var(--line); border-radius: var(--radius);
+    width:36px; height:36px; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);
+    flex-shrink:0;
+  }
+  .brand{ display:flex; align-items:center; gap:9px; cursor:pointer; flex-shrink:0; }
+  .brand svg.icon{ width:22px; height:22px; color:var(--accent); }
+  .brand-text h1{ font-size: 19px; line-height:1.1; }
+  .brand-text p{ margin:1px 0 0; color:var(--ink-soft); font-size:12px; }
+
+  .search-region{ position: relative; flex:1; max-width: 420px; margin-left: auto; }
+  .search-input-wrap{
+    display:flex; align-items:center; gap:8px;
+    border:1px solid var(--line); border-radius: var(--radius);
+    background: var(--panel); padding: 8px 12px;
+  }
+  .search-input-wrap svg.icon{ color: var(--ink-faint); }
+  .search-input-wrap input{
+    border:none; background:none; outline:none; font:inherit; font-size:14px; color:var(--ink); width:100%;
+  }
+  .search-input-wrap input::placeholder{ color: var(--ink-faint); }
+  .search-results{
+    position:absolute; top: calc(100% + 6px); left:0; right:0;
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-height: 360px; overflow-y:auto; z-index: 30;
+    display:none;
+  }
+  .search-results.open{ display:block; }
+  .search-results .group-label{
+    font-size:11px; text-transform:uppercase; letter-spacing:.05em; color: var(--ink-faint);
+    padding: 10px 12px 4px;
+  }
+  .search-results button{
+    width:100%; text-align:left; background:none; border:none; cursor:pointer;
+    padding: 8px 12px; font-size:14px; color: var(--ink); display:flex; justify-content:space-between; gap:8px;
+  }
+  .search-results button:hover, .search-results button.active{ background: var(--sidebar); }
+  .search-results .tier-chip{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color: var(--ink-faint); flex-shrink:0;
+  }
+  .search-empty{ padding: 14px 12px; font-size:13.5px; color: var(--ink-faint); }
+
+  /* ---------- disclaimer ---------- */
+  .disclaimer{
+    display:flex; gap:10px; align-items:flex-start;
+    border-left:3px solid var(--ochre); background: var(--ochre-soft); color:#4A3A12;
+    padding: 11px 16px; margin: 16px clamp(16px,4vw,40px) 0; font-size: 13px; max-width: 900px;
+  }
+  .disclaimer svg.icon{ margin-top:2px; flex-shrink:0; }
+
+  /* ---------- layout ---------- */
+  .layout{ display:grid; grid-template-columns: 270px 1fr; min-height: calc(100vh - 130px); }
+  .scrim{ display:none; }
+
+  aside.sidebar{
+    background: var(--sidebar); border-right:1px solid var(--line);
+    padding: 20px 16px 40px; overflow-y:auto;
+  }
+  .nav-group{ margin-bottom: 22px; }
+  .nav-group h3{
+    font-family:'IBM Plex Sans',sans-serif; font-size:11px; font-weight:600; color:var(--ink-soft);
+    text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; padding:0 2px;
+  }
+  .home-link{
+    display:flex; align-items:center; gap:8px; width:100%; background:none; border:none; cursor:pointer;
+    font-size:14.5px; font-weight:500; color:var(--ink); padding:7px 2px; margin-bottom:14px;
+  }
+  .home-link svg.icon{ color: var(--accent); }
+  .species-block{ margin-bottom:4px; }
+  .species-btn{
+    width:100%; display:flex; align-items:center; gap:9px; text-align:left; background:none; border:none;
+    font:inherit; font-size:14.5px; font-weight:500; color:var(--ink); padding:7px 2px; cursor:pointer;
+  }
+  .species-btn svg.icon{ color: var(--accent); flex-shrink:0; }
+  .species-btn .count{ margin-left:auto; font-size:11px; color:var(--ink-faint); font-family:'IBM Plex Mono',monospace; }
+  .condition-list{ list-style:none; margin:2px 0 6px; padding:0 0 0 30px; }
+  .condition-list li button{
+    width:100%; text-align:left; background:none; border:none; border-left:2px solid transparent;
+    font:inherit; font-size:13.5px; color:var(--ink-soft); padding:6px 0 6px 10px; cursor:pointer;
+  }
+  .condition-list li button:hover{ color:var(--ink); }
+  .condition-list li button[aria-current="true"]{ color:var(--ink); border-left-color:var(--accent); font-weight:500; }
+  .ref-btn{
+    width:100%; display:flex; align-items:center; gap:9px; text-align:left; background:none; border:none;
+    border-left:2px solid transparent; font:inherit; font-size:14px; color:var(--ink-soft);
+    padding:7px 0 7px 8px; cursor:pointer;
+  }
+  .ref-btn svg.icon{ color: var(--caution); flex-shrink:0; }
+  .ref-btn:hover{ color:var(--ink); }
+  .ref-btn[aria-current="true"]{ color:var(--ink); border-left-color:var(--caution); font-weight:500; }
+
+  main{ padding: 32px clamp(16px,4vw,48px) 60px; max-width: 820px; }
+  .breadcrumb{ font-size:12.5px; color:var(--ink-faint); margin-bottom:18px; }
+  .breadcrumb button{ background:none; border:none; padding:0; color:var(--ink-faint); font:inherit; cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
+  .breadcrumb button:hover{ color:var(--accent); }
+  .breadcrumb .sep{ margin:0 6px; }
+
+  /* ---------- home view ---------- */
+  .home-hero{ margin-bottom: 34px; max-width: 620px; }
+  .home-hero h2{ font-size: 30px; margin-bottom:10px; }
+  .home-hero p{ color: var(--ink-soft); font-size:15px; }
+  .card-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; margin-bottom: 30px; }
+  @media (max-width:560px){ .card-grid{ grid-template-columns: 1fr; } }
+  .home-card{
+    display:flex; flex-direction:column; gap:8px; text-align:left; cursor:pointer;
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 18px; transition: box-shadow .15s ease, transform .15s ease;
+  }
+  .home-card:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
+  .home-card svg.icon{ width:26px; height:26px; color: var(--accent); }
+  .home-card h3{ font-size:16.5px; }
+  .home-card p{ font-size:13px; color: var(--ink-soft); }
+  .home-card .meta{ font-size:11.5px; color: var(--ink-faint); font-family:'IBM Plex Mono',monospace; margin-top:auto; }
+  .home-card.ref-card svg.icon{ color: var(--caution); }
+  .section-label{ font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:600; margin: 30px 0 12px; }
+
+  /* ---------- lookup detail ---------- */
+  .detail-head{ margin-bottom:20px; padding-bottom:18px; border-bottom:1px solid var(--line); }
+  .detail-head .kicker{ display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--ink-soft); margin-bottom:6px; }
+  .detail-head .kicker svg.icon{ color: var(--accent); }
+  .detail-head h2{ font-size:27px; }
+
+  .tier-row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom: 20px; }
+  .tier-badge{
+    display:inline-flex; align-items:center; gap:9px; font-size:13px; padding:7px 11px;
+    border:1px solid var(--line); border-radius: var(--radius);
+  }
+  .tier-badge .letter{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; background: var(--accent-soft); color: var(--accent);
+    border-radius: var(--radius); padding:1px 7px;
+  }
+  .tier-badge[data-tier="D"] .letter, .tier-badge[data-tier="R"] .letter{ background: var(--ochre-soft); color: var(--ochre); }
+  .meter{ display:flex; gap:3px; }
+  .meter .seg{ width:8px; height:8px; border-radius:2px; border:1px solid var(--line); background:transparent; }
+  .meter .seg.filled{ background: var(--accent); border-color: var(--accent); }
+  .meter.reg .seg{ visibility:hidden; }
+
+  .dose-hero{ display:flex; align-items:baseline; gap:14px; margin:4px 0 24px; flex-wrap:wrap; }
+  .dose-figure{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:31px; color:var(--accent); line-height:1.15; }
+  .dose-figure.caution{ color:var(--caution); font-size:19px; }
+  .dose-note{ font-size:13.5px; color:var(--ink-soft); }
+
+  section.block{ margin-bottom:22px; }
+  section.block h3{ font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:600; margin-bottom:6px; }
+  section.block p{ font-size:15px; }
+  .source-line{ font-size:13.5px; color:var(--ink-soft); font-style:italic; }
+
+  .related-row{ margin-top: 30px; padding-top:18px; border-top:1px solid var(--line); }
+  .related-row h3{ font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:600; margin-bottom:10px; }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    background: var(--panel); border:1px solid var(--line); border-radius: 999px; padding:6px 13px;
+    font-size:13px; cursor:pointer; color: var(--ink);
+  }
+  .chip:hover{ border-color: var(--accent); color: var(--accent); }
+
+  .tier-legend{ margin-top:34px; padding-top:16px; border-top:1px solid var(--line); font-size:12.5px; color:var(--ink-soft); }
+  .tier-legend dl{ display:grid; grid-template-columns:auto 1fr; gap:4px 10px; margin:8px 0 0; }
+  .tier-legend dt{ font-family:'IBM Plex Mono',monospace; font-weight:600; }
+  .tier-legend dd{ margin:0; }
+
+  /* ---------- reference pages ---------- */
+  .ref-page h2{ font-size:25px; margin-bottom:22px; display:flex; align-items:center; gap:10px; }
+  .ref-page h2 svg.icon{ color: var(--caution); width:22px; height:22px; }
+  .ref-section{ margin-bottom:22px; }
+  .ref-section h3{ font-size:15.5px; font-family:'Fraunces',serif; font-weight:600; margin-bottom:6px; }
+  .ref-section p{ font-size:15px; }
+
+  .empty-state{ color: var(--ink-soft); font-size:14.5px; }
+
+  footer.app-footer{
+    border-top:1px solid var(--line); padding:14px clamp(16px,4vw,40px); font-size:12px; color:var(--ink-faint);
+  }
+
+  /* ---------- responsive / mobile drawer ---------- */
+  @media (max-width: 800px){
+    .layout{ grid-template-columns: 1fr; }
+    .menu-toggle{ display:flex; }
+    aside.sidebar{
+      position: fixed; top:0; left:0; bottom:0; width: 280px; z-index: 40;
+      transform: translateX(-100%); transition: transform .2s ease; box-shadow: var(--shadow);
+    }
+    aside.sidebar.open{ transform: translateX(0); }
+    .scrim.open{
+      display:block; position:fixed; inset:0; background: rgba(20,24,20,0.35); z-index:35;
+    }
+    .search-region{ max-width: none; }
+  }
+
+  @media print{
+    header.top, aside.sidebar, .disclaimer, footer.app-footer, .breadcrumb{ display:none; }
+    body{ background:#fff; }
+    main{ max-width:none; padding:0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <div class="brand" id="brandLink" role="button" tabindex="0" aria-label="Go to home">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="7" cy="8" r="2.1"/><circle cx="12" cy="5.5" r="2.1"/><circle cx="17" cy="8" r="2.1"/><path d="M12 12c-3.3 0-6.2 2.2-6.7 5.1-.3 1.7 1.1 3.1 2.8 2.8.9-.2 1.8-.6 2.6-1 .8-.4 1.6-.4 2.4 0 .8.4 1.7.8 2.6 1 1.7.3 3.1-1.1 2.8-2.8-.5-2.9-3.4-5.1-6.5-5.1Z"/></svg>
+    <div class="brand-text">
+      <h1>Cannabis &amp; Veterinary Reference</h1>
+      <p id="subtitle">Prototype lookup tool</p>
+    </div>
+  </div>
+  <div class="search-region">
+    <div class="search-input-wrap">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="search" id="search" placeholder="Search species or condition…" autocomplete="off" aria-label="Search species or condition">
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</header>
+
+<div class="disclaimer" id="disclaimer">
+  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86 1.8 18a1 1 0 0 0 .86 1.5h18.7a1 1 0 0 0 .86-1.5L13.7 3.86a1 1 0 0 0-1.72 0Z"/></svg>
+  <span id="disclaimerText">Loading…</span>
+</div>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <button class="home-link" id="homeLinkSidebar" type="button">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
+      Home
+    </button>
+    <div id="species-nav"></div>
+    <div class="nav-group" id="reference-nav">
+      <h3>Reference</h3>
+    </div>
+  </aside>
+
+  <main id="main">
+    <p class="empty-state">Loading knowledge base…</p>
+  </main>
+</div>
+
+<footer class="app-footer">
+  Sources compiled from public veterinary literature and regulatory guidance, September 2026. Not a substitute for veterinary judgment. See the full knowledge base (<code>01–07 .md</code> files) in this repository for citations.
+</footer>
+
+<script>
+(function(){
+  var DATA = null;
+  var SEARCH_INDEX = [];
+  var state = { view: 'home', speciesId: null, conditionId: null, refId: null };
+  var activeSearchIndex = -1;
+
+  var ICONS = {
+    canine: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="9" r="2"/><circle cx="10.5" cy="5.5" r="2"/><circle cx="15.5" cy="5.5" r="2"/><circle cx="20" cy="9" r="2"/><path d="M13 10c-4 0-7.5 2.7-8 6.2-.4 2 1.3 3.8 3.4 3.4 1-.2 2.1-.7 3.1-1.2.9-.5 1.9-.5 2.8 0 1 .5 2.1 1 3.1 1.2 2.1.4 3.8-1.4 3.4-3.4-.5-3.5-4-6.2-7.8-6.2Z"/></svg>',
+    feline: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 4 8 9h8l2-5-4.5 2.5h-3Z"/><path d="M8 9c-2.5 1-4 3.4-4 6.2C4 18.9 7.6 21 12 21s8-2.1 8-5.8c0-2.8-1.5-5.2-4-6.2"/><circle cx="9.7" cy="14.5" r=".6" fill="currentColor" stroke="none"/><circle cx="14.3" cy="14.5" r=".6" fill="currentColor" stroke="none"/></svg>',
+    equine: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20c0-4.5 1-8 3-10.5C10 6.8 12 5 14.5 5c1.8 0 2.5 1.3 2 2.7-.4 1.1-1.4 1.6-2.5 1.8"/><path d="M14.8 9.3 19 8"/><circle cx="15.7" cy="7.4" r=".55" fill="currentColor" stroke="none"/><path d="M8.5 12.5c1.5.8 3 .8 4.5 0"/><path d="M9 20l.6-4M15 20l-.4-4.5"/></svg>',
+    livestock: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V9"/><path d="M12 9c0-2.5-1.5-4-3-5"/><path d="M12 9c0-2.5 1.5-4 3-5"/><path d="M12 13c-1.8 0-3-1.2-3-3"/><path d="M12 13c1.8 0 3-1.2 3-3"/><path d="M12 17c-1.8 0-3-1.2-3-3"/><path d="M12 17c1.8 0 3-1.2 3-3"/></svg>',
+    legal: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h4l-2 5a2.2 2.2 0 0 1-4 0Z"/><path d="M15 7h4l-2 5a2.2 2.2 0 0 1-4 0Z"/><path d="M5 7 12 5l7 2"/><path d="M8 21h8"/></svg>',
+    toxicity: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.86 1.8 18a1 1 0 0 0 .86 1.5h18.7a1 1 0 0 0 .86-1.5L13.7 3.86a1 1 0 0 0-1.72 0Z"/></svg>'
+  };
+  function iconFor(id){ return ICONS[id] || ''; }
+
+  function el(tag, attrs, children){
+    var e = document.createElement(tag);
+    attrs = attrs || {};
+    Object.keys(attrs).forEach(function(k){
+      if(k === 'text'){ e.textContent = attrs[k]; }
+      else if(k === 'html'){ e.innerHTML = attrs[k]; }
+      else { e.setAttribute(k, attrs[k]); }
+    });
+    (children || []).forEach(function(c){ if(c) e.appendChild(c); });
+    return e;
+  }
+
+  function findSpecies(id){ return DATA.species.find(function(s){ return s.id === id; }); }
+  function findCondition(speciesId, condId){
+    var sp = findSpecies(speciesId);
+    if(!sp) return null;
+    return sp.conditions.find(function(c){ return c.id === condId; });
+  }
+  function refPage(id){ return DATA.referencePages.find(function(r){ return r.id === id; }); }
+
+  var TIER_RANK = { A:4, B:3, C:2, D:1, R:0 };
+
+  /* ---------------- sidebar ---------------- */
+  function renderSidebar(){
+    var speciesNav = document.getElementById('species-nav');
+    speciesNav.innerHTML = '';
+    var group = el('div', {class:'nav-group'}, [el('h3', {text:'Species'})]);
+    DATA.species.forEach(function(sp){
+      var block = el('div', {class:'species-block'});
+      var btn = el('button', {class:'species-btn', type:'button', html: iconFor(sp.id)});
+      btn.appendChild(el('span', {text: sp.label}));
+      btn.appendChild(el('span', {class:'count', text: sp.conditions.length}));
+      btn.addEventListener('click', function(){
+        navigate('lookup', sp.id, sp.conditions[0] ? sp.conditions[0].id : null);
+      });
+      block.appendChild(btn);
+
+      var list = el('ul', {class:'condition-list'});
+      sp.conditions.forEach(function(c){
+        var li = el('li');
+        var cbtn = el('button', {type:'button', text: c.condition, 'data-cond': c.id, 'data-sp': sp.id});
+        cbtn.addEventListener('click', function(){ navigate('lookup', sp.id, c.id); });
+        li.appendChild(cbtn);
+        list.appendChild(li);
+      });
+      block.appendChild(list);
+      group.appendChild(block);
+    });
+    speciesNav.appendChild(group);
+
+    var refNav = document.getElementById('reference-nav');
+    refNav.innerHTML = '<h3>Reference</h3>';
+    DATA.referencePages.forEach(function(rp){
+      var btn = el('button', {class:'ref-btn', type:'button', html: iconFor(rp.id)});
+      btn.appendChild(el('span', {text: rp.label}));
+      btn.addEventListener('click', function(){ navigate('reference', null, null, rp.id); });
+      refNav.appendChild(btn);
+    });
+  }
+
+  function highlightSidebar(){
+    document.querySelectorAll('.condition-list li button').forEach(function(b){ b.removeAttribute('aria-current'); });
+    document.querySelectorAll('.ref-btn').forEach(function(b){ b.removeAttribute('aria-current'); });
+    if(state.view === 'lookup' && state.conditionId){
+      document.querySelectorAll('.condition-list li button').forEach(function(b){
+        if(b.getAttribute('data-cond') === state.conditionId && b.getAttribute('data-sp') === state.speciesId){
+          b.setAttribute('aria-current', 'true');
+        }
+      });
+    }
+    if(state.view === 'reference' && state.refId){
+      document.querySelectorAll('.ref-btn').forEach(function(b){
+        if(b.textContent.trim() === refPage(state.refId).label){ b.setAttribute('aria-current', 'true'); }
+      });
+    }
+  }
+
+  /* ---------------- navigation ---------------- */
+  function navigate(view, speciesId, conditionId, refId){
+    state.view = view;
+    state.speciesId = speciesId || null;
+    state.conditionId = conditionId || null;
+    state.refId = refId || null;
+    closeDrawer();
+    closeSearch();
+    render();
+    window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+  }
+
+  function breadcrumb(parts){
+    var wrap = el('div', {class:'breadcrumb'});
+    parts.forEach(function(p, i){
+      if(i > 0) wrap.appendChild(el('span', {class:'sep', text:'/'}));
+      if(p.action){
+        var b = el('button', {type:'button', text: p.label});
+        b.addEventListener('click', p.action);
+        wrap.appendChild(b);
+      } else {
+        wrap.appendChild(el('span', {text: p.label}));
+      }
+    });
+    return wrap;
+  }
+
+  /* ---------------- main render ---------------- */
+  function renderMeter(tier){
+    var wrap = el('div', {class:'meter' + (tier === 'R' ? ' reg' : '')});
+    var rank = TIER_RANK[tier] || 0;
+    for(var i=1;i<=4;i++){
+      wrap.appendChild(el('div', {class:'seg' + (i<=rank ? ' filled' : '')}));
+    }
+    return wrap;
+  }
+
+  function renderHome(){
+    var main = document.getElementById('main');
+    main.innerHTML = '';
+    var hero = el('div', {class:'home-hero'});
+    hero.appendChild(el('h2', {text:'Species & condition dose reference'}));
+    hero.appendChild(el('p', {text:'Pick a species to see what the published veterinary literature actually reports \u2014 studied dose ranges, evidence strength, and the source behind each figure. Built for a quick check during a client conversation, not as a substitute for clinical judgment.'}));
+    main.appendChild(hero);
+
+    main.appendChild(el('div', {class:'section-label', text:'Look up a species'}));
+    var grid = el('div', {class:'card-grid'});
+    DATA.species.forEach(function(sp){
+      var card = el('button', {class:'home-card', type:'button', html: iconFor(sp.id)});
+      card.appendChild(el('h3', {text: sp.label}));
+      card.appendChild(el('p', {text: sp.commonName}));
+      card.appendChild(el('div', {class:'meta', text: sp.conditions.length + ' condition' + (sp.conditions.length===1?'':'s') + ' referenced'}));
+      card.addEventListener('click', function(){ navigate('lookup', sp.id, sp.conditions[0].id); });
+      grid.appendChild(card);
+    });
+    main.appendChild(grid);
+
+    main.appendChild(el('div', {class:'section-label', text:'Reference'}));
+    var refGrid = el('div', {class:'card-grid'});
+    DATA.referencePages.forEach(function(rp){
+      var card = el('button', {class:'home-card ref-card', type:'button', html: iconFor(rp.id)});
+      card.appendChild(el('h3', {text: rp.label}));
+      card.appendChild(el('p', {text: rp.sections[0] ? rp.sections[0].heading : ''}));
+      card.addEventListener('click', function(){ navigate('reference', null, null, rp.id); });
+      refGrid.appendChild(card);
+    });
+    main.appendChild(refGrid);
+  }
+
+  function renderReference(){
+    var main = document.getElementById('main');
+    main.innerHTML = '';
+    var rp = refPage(state.refId);
+    main.appendChild(breadcrumb([
+      {label:'Home', action: function(){ navigate('home'); }},
+      {label: rp.label}
+    ]));
+    var wrap = el('div', {class:'ref-page'});
+    var h2 = el('h2', {html: iconFor(rp.id)});
+    h2.appendChild(document.createTextNode(rp.label));
+    wrap.appendChild(h2);
+    rp.sections.forEach(function(s){
+      var sec = el('div', {class:'ref-section'});
+      sec.appendChild(el('h3', {text: s.heading}));
+      sec.appendChild(el('p', {text: s.body}));
+      wrap.appendChild(sec);
+    });
+    main.appendChild(wrap);
+  }
+
+  function renderLookup(){
+    var main = document.getElementById('main');
+    main.innerHTML = '';
+    var sp = findSpecies(state.speciesId);
+    var c = findCondition(state.speciesId, state.conditionId);
+    if(!sp || !c){ main.appendChild(el('p', {class:'empty-state', text:'Condition not found.'})); return; }
+
+    main.appendChild(breadcrumb([
+      {label:'Home', action: function(){ navigate('home'); }},
+      {label: sp.label, action: function(){ navigate('lookup', sp.id, sp.conditions[0].id); }},
+      {label: c.condition}
+    ]));
+
+    var head = el('div', {class:'detail-head'});
+    var kicker = el('p', {class:'kicker', html: iconFor(sp.id)});
+    kicker.appendChild(document.createTextNode(sp.label + ' \u00B7 ' + sp.commonName));
+    head.appendChild(kicker);
+    head.appendChild(el('h2', {text: c.condition}));
+    main.appendChild(head);
+
+    var tierRow = el('div', {class:'tier-row'});
+    var badge = el('div', {class:'tier-badge'});
+    badge.setAttribute('data-tier', c.tier);
+    badge.appendChild(el('span', {class:'letter', text: c.tier}));
+    badge.appendChild(el('span', {text: DATA.meta.tiers[c.tier] || ''}));
+    tierRow.appendChild(badge);
+    tierRow.appendChild(renderMeter(c.tier));
+    main.appendChild(tierRow);
+
+    var hero = el('div', {class:'dose-hero'});
+    var isCaution = /not approved|no dose|no.*rct|no confirmed|not a dosing/i.test(c.dose);
+    hero.appendChild(el('div', {class:'dose-figure' + (isCaution ? ' caution' : ''), text: c.dose}));
+    if(c.doseNote){ hero.appendChild(el('div', {class:'dose-note', text: c.doseNote})); }
+    main.appendChild(hero);
+
+    var notes = el('section', {class:'block'});
+    notes.appendChild(el('h3', {text:'Notes'}));
+    notes.appendChild(el('p', {text: c.notes}));
+    main.appendChild(notes);
+
+    var src = el('section', {class:'block'});
+    src.appendChild(el('h3', {text:'Source'}));
+    src.appendChild(el('p', {class:'source-line', text: c.source}));
+    main.appendChild(src);
+
+    var others = sp.conditions.filter(function(x){ return x.id !== c.id; });
+    if(others.length){
+      var rel = el('div', {class:'related-row'});
+      rel.appendChild(el('h3', {text:'Other ' + sp.label.toLowerCase() + ' conditions'}));
+      var chips = el('div', {class:'chip-row'});
+      others.forEach(function(o){
+        var chip = el('button', {class:'chip', type:'button', text: o.condition});
+        chip.addEventListener('click', function(){ navigate('lookup', sp.id, o.id); });
+        chips.appendChild(chip);
+      });
+      rel.appendChild(chips);
+      main.appendChild(rel);
+    }
+
+    var legend = el('div', {class:'tier-legend'});
+    legend.appendChild(el('div', {text:'Evidence tiers'}));
+    var dl = el('dl');
+    Object.keys(DATA.meta.tiers).forEach(function(t){
+      dl.appendChild(el('dt', {text: t}));
+      dl.appendChild(el('dd', {text: DATA.meta.tiers[t]}));
+    });
+    legend.appendChild(dl);
+    main.appendChild(legend);
+  }
+
+  function render(){
+    if(state.view === 'home') renderHome();
+    else if(state.view === 'reference') renderReference();
+    else renderLookup();
+    highlightSidebar();
+  }
+
+  /* ---------------- search ---------------- */
+  function buildSearchIndex(){
+    SEARCH_INDEX = [];
+    DATA.species.forEach(function(sp){
+      sp.conditions.forEach(function(c){
+        SEARCH_INDEX.push({ type:'condition', speciesId: sp.id, speciesLabel: sp.label, conditionId: c.id, label: c.condition, tier: c.tier });
+      });
+    });
+    DATA.referencePages.forEach(function(rp){
+      SEARCH_INDEX.push({ type:'reference', refId: rp.id, label: rp.label });
+    });
+  }
+
+  function openSearch(){ document.getElementById('searchResults').classList.add('open'); }
+  function closeSearch(){
+    document.getElementById('searchResults').classList.remove('open');
+    activeSearchIndex = -1;
+  }
+
+  function runSearch(query){
+    var box = document.getElementById('searchResults');
+    query = query.trim().toLowerCase();
+    if(!query){ closeSearch(); box.innerHTML=''; return; }
+
+    var results = SEARCH_INDEX.filter(function(item){
+      return item.label.toLowerCase().indexOf(query) !== -1 ||
+        (item.speciesLabel && item.speciesLabel.toLowerCase().indexOf(query) !== -1);
+    }).slice(0, 10);
+
+    box.innerHTML = '';
+    activeSearchIndex = -1;
+    if(!results.length){
+      box.appendChild(el('div', {class:'search-empty', text:'No matches for \u201C' + query + '\u201D.'}));
+      openSearch();
+      return;
+    }
+    results.forEach(function(r){
+      var btn = el('button', {type:'button'});
+      if(r.type === 'condition'){
+        btn.appendChild(el('span', {text: r.speciesLabel + ' \u2014 ' + r.label}));
+        btn.appendChild(el('span', {class:'tier-chip', text: 'Tier ' + r.tier}));
+        btn.addEventListener('click', function(){
+          document.getElementById('search').value = '';
+          navigate('lookup', r.speciesId, r.conditionId);
+        });
+      } else {
+        btn.appendChild(el('span', {text: r.label}));
+        btn.appendChild(el('span', {class:'tier-chip', text: 'Reference'}));
+        btn.addEventListener('click', function(){
+          document.getElementById('search').value = '';
+          navigate('reference', null, null, r.refId);
+        });
+      }
+      box.appendChild(btn);
+    });
+    openSearch();
+  }
+
+  function moveSearchActive(delta){
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('#searchResults button'));
+    if(!buttons.length) return;
+    if(activeSearchIndex >= 0) buttons[activeSearchIndex].classList.remove('active');
+    activeSearchIndex = (activeSearchIndex + delta + buttons.length) % buttons.length;
+    buttons[activeSearchIndex].classList.add('active');
+    buttons[activeSearchIndex].scrollIntoView({block:'nearest'});
+  }
+
+  /* ---------------- mobile drawer ---------------- */
+  function openDrawer(){
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('scrim').classList.add('open');
+    document.getElementById('menuToggle').setAttribute('aria-expanded', 'true');
+  }
+  function closeDrawer(){
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('scrim').classList.remove('open');
+    document.getElementById('menuToggle').setAttribute('aria-expanded', 'false');
+  }
+
+  /* ---------------- init ---------------- */
+  function init(data){
+    DATA = data;
+    document.getElementById('subtitle').textContent = DATA.meta.subtitle;
+    document.getElementById('disclaimerText').textContent = DATA.meta.disclaimer;
+    renderSidebar();
+    buildSearchIndex();
+    render();
+
+    var searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', function(e){ runSearch(e.target.value); });
+    searchInput.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowDown'){ e.preventDefault(); moveSearchActive(1); }
+      else if(e.key === 'ArrowUp'){ e.preventDefault(); moveSearchActive(-1); }
+      else if(e.key === 'Enter'){
+        var buttons = document.querySelectorAll('#searchResults button');
+        if(activeSearchIndex >= 0 && buttons[activeSearchIndex]) buttons[activeSearchIndex].click();
+        else if(buttons.length === 1) buttons[0].click();
+      } else if(e.key === 'Escape'){ closeSearch(); searchInput.blur(); }
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.search-region')) closeSearch();
+    });
+
+    document.getElementById('menuToggle').addEventListener('click', openDrawer);
+    document.getElementById('scrim').addEventListener('click', closeDrawer);
+    document.getElementById('brandLink').addEventListener('click', function(){ navigate('home'); });
+    document.getElementById('brandLink').addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); navigate('home'); }
+    });
+    document.getElementById('homeLinkSidebar').addEventListener('click', function(){ navigate('home'); });
+  }
+
+  fetch('data/app-data.json')
+    .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(init)
+    .catch(function(err){
+      document.getElementById('main').innerHTML =
+        '<p class="empty-state">Could not load data/app-data.json (' + err.message + '). ' +
+        'If you opened this file directly from disk, browsers block local file fetches \u2014 ' +
+        'run a local server (see SETUP.md) or view it via GitHub Pages instead.</p>';
+      document.getElementById('disclaimerText').textContent =
+        'This tool summarizes published literature and is not a formulary or prescription. Always confirm with a licensed veterinarian.';
+    });
+})();
+</script>
+</body>
+</html>

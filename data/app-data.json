@@ -1,0 +1,198 @@
+{
+  "meta": {
+    "title": "Cannabis & Veterinary Reference",
+    "subtitle": "Prototype lookup tool — literature summary, not a formulary",
+    "disclaimer": "This tool summarizes findings from published veterinary literature and regulatory sources. No entry is an FDA-approved dose or a prescription. Always confirm with the treating veterinarian, verify the product (THC content, third-party testing), and check current state-specific rules before acting on anything shown here.",
+    "tiers": {
+      "A": "Randomized controlled trial in the target species and condition",
+      "B": "Non-randomized clinical study, case series, or a single RCT not yet replicated",
+      "C": "Safety / tolerance study in healthy animals — not disease-specific efficacy",
+      "D": "Consumer or practical guidance not sourced to a peer-reviewed study",
+      "R": "Regulatory status — not a clinical evidence question"
+    }
+  },
+  "species": [
+    {
+      "id": "canine",
+      "label": "Canine",
+      "commonName": "Dogs",
+      "conditions": [
+        {
+          "id": "canine-oa",
+          "condition": "Osteoarthritis / chronic pain",
+          "tier": "A",
+          "dose": "2 mg/kg, twice daily",
+          "doseNote": "studied range 2–8 mg/kg/day",
+          "notes": "Studied as an adjunct to conventional multimodal analgesia (e.g. NSAIDs), not as a monotherapy replacement. This is the most-cited canine CBD efficacy study.",
+          "source": "Gamble et al. 2018, Frontiers in Veterinary Science"
+        },
+        {
+          "id": "canine-epilepsy",
+          "condition": "Idiopathic epilepsy (drug-resistant)",
+          "tier": "A",
+          "dose": "Add-on to existing AEDs",
+          "doseNote": "no single figure standardized across trials",
+          "notes": "CBD studied strictly as an add-on to standard anti-epileptic drugs. Reduced seizure frequency vs. placebo in the add-on arm across two independent trials.",
+          "source": "McGrath et al. 2019 JAVMA; Rozental et al. 2023 J Vet Intern Med (51 dogs, crossover)"
+        },
+        {
+          "id": "canine-derm",
+          "condition": "Atopic dermatitis / pruritus",
+          "tier": "B",
+          "dose": "Not independently published in detail",
+          "doseNote": "single trial only",
+          "notes": "About 65% of treated dogs showed ≥50% reduction in itch/chew behavior, roughly half fully resolved. A single trial — not yet replicated — so treat this as promising but preliminary.",
+          "source": "CannPal canine atopic dermatitis study, summarized by Cornell Riney Canine Health Center"
+        },
+        {
+          "id": "canine-safety",
+          "condition": "General safety / long-term tolerance",
+          "tier": "C",
+          "dose": "~4 mg/kg/day",
+          "doseNote": "well tolerated over 6 months; escalation studies tolerated 10–20 mg/kg/day short-term",
+          "notes": "Recurring mild ALP (liver enzyme) elevation reported across several studies. Baseline and periodic bloodwork is a reasonable safeguard on any multi-week course.",
+          "source": "Bradley/Bakke et al. 2022 Frontiers in Vet Science; Deabold et al. 2019 Animals"
+        },
+        {
+          "id": "canine-practical",
+          "condition": "General starting dose (practical/consumer tier)",
+          "tier": "D",
+          "dose": "0.1–0.5 mg/kg",
+          "doseNote": "split BID, reassess at 5–7 days before increasing",
+          "notes": "Not sourced to a controlled trial — typical of commercial pet-CBD product guidance. Present with lower confidence than the tiers above.",
+          "source": "Aggregated pet-CBD dosing guides (non-peer-reviewed)"
+        }
+      ]
+    },
+    {
+      "id": "feline",
+      "label": "Feline",
+      "commonName": "Cats",
+      "conditions": [
+        {
+          "id": "feline-safety",
+          "condition": "General safety / long-term tolerance",
+          "tier": "C",
+          "dose": "4 mg/kg/day",
+          "doseNote": "THC-free CBD distillate, well tolerated over 26 weeks",
+          "notes": "Longest published feline CBD safety study to date. Persistent ALT elevation was noted in at least one cat — monitor ALT at baseline and again around 6 weeks.",
+          "source": "Coltherd et al. 2023/2024, Frontiers in Veterinary Science"
+        },
+        {
+          "id": "feline-ceiling",
+          "condition": "Acute tolerance ceiling (not a therapeutic dose)",
+          "tier": "C",
+          "dose": "up to 80 mg/kg",
+          "doseNote": "single dose, short-term tolerance study only",
+          "notes": "This is a safety-study ceiling, not a treatment recommendation. Do not present this figure as a dosing target.",
+          "source": "Short-term feline escalating-dose safety studies"
+        },
+        {
+          "id": "feline-disease",
+          "condition": "Any specific feline disease (OA, CKD-related inflammation, etc.)",
+          "tier": "D",
+          "dose": "No disease-specific efficacy RCT published yet",
+          "doseNote": "major evidence gap",
+          "notes": "There is currently much better evidence that CBD is tolerated in healthy cats than that it is effective for any specific feline disease. Flag this gap explicitly rather than extrapolating from dog data.",
+          "source": "Stated as an evidence gap — no source to cite"
+        },
+        {
+          "id": "feline-practical",
+          "condition": "General starting dose (practical/consumer tier)",
+          "tier": "D",
+          "dose": "0.1–0.5 mg/kg",
+          "doseNote": "start low — cats are more sensitive than dogs",
+          "notes": "Some consumer sources claim cats need roughly 2x the per-pound dog dose. This conflicts with the peer-reviewed safety data, which supports starting low. Surface the peer-reviewed 4 mg/kg tolerance data as the more authoritative reference point.",
+          "source": "Aggregated pet-CBD dosing guides (non-peer-reviewed)"
+        }
+      ]
+    },
+    {
+      "id": "equine",
+      "label": "Equine",
+      "commonName": "Horses",
+      "conditions": [
+        {
+          "id": "equine-oa",
+          "condition": "Osteoarthritis / lameness pain",
+          "tier": "B",
+          "dose": "0.5–3 mg/kg",
+          "doseNote": "studied across pharmacokinetic and small clinical trials",
+          "notes": "No confirmed synovial-fluid penetration of CBD despite joint-relief marketing claims. CBDA reaches substantially higher serum concentrations than CBD at an equivalent oral dose.",
+          "source": "Interlandi et al. 2024; Yocom/Contino et al.; 2025 AJVR chronic dosing safety study"
+        },
+        {
+          "id": "equine-competition",
+          "condition": "Competition / performance horses",
+          "tier": "R",
+          "dose": "Not a dosing question — regulatory",
+          "doseNote": "check competition status first",
+          "notes": "FEI reclassified CBD/CBDA from prohibited to controlled medication in 2022. Detection can still trigger an adverse analytical finding under the new classification. Always check competition status before recommending any cannabinoid product for a performance horse.",
+          "source": "Frontiers in Veterinary Science, Connemara pony PK study, 2026"
+        }
+      ]
+    },
+    {
+      "id": "livestock",
+      "label": "Livestock / Food Animals",
+      "commonName": "Cattle, swine, poultry, sheep, goats",
+      "conditions": [
+        {
+          "id": "livestock-any",
+          "condition": "Any condition, any food-producing species",
+          "tier": "R",
+          "dose": "Not approved — no dose exists",
+          "doseNote": "no FDA/AAFCO-approved cannabinoid ingredient",
+          "notes": "Do not provide a dose. No hemp or cannabis ingredient is currently FDA/AAFCO-approved for food-producing animals, due to concern about cannabinoid residue carrying over into meat, milk, or eggs. Refer to the state department of agriculture or feed control office for current status. This applies even to a 'pet' animal (e.g. a backyard hen) if its products could enter the food supply.",
+          "source": "AAFCO position statements; FDA-CVM feed ingredient approval status; CDFA HempCBD Notice"
+        }
+      ]
+    }
+  ],
+  "referencePages": [
+    {
+      "id": "legal",
+      "label": "Legal & Regulatory",
+      "sections": [
+        {
+          "heading": "Federal status",
+          "body": "The 2018 Farm Bill descheduled hemp (≤0.3% THC) from the Controlled Substances Act's definition of marijuana, but created no approval pathway for hemp-derived ingredients in animal food or drugs. FDA's Center for Veterinary Medicine considers CBD/hemp products marketed with therapeutic claims to be unapproved new animal drugs — no cannabinoid product currently has FDA approval for veterinary use. In 2025 the FDA opened a public request-for-information docket on cannabis-derived veterinary products, with possible formal compliance standards or enforcement action in 2026. In April 2025 the FDA sent warning letters to four pet-CBD manufacturers over illegal disease-treatment claims, including cancer claims."
+        },
+        {
+          "heading": "AVMA / veterinary association position",
+          "body": "The American Association of Veterinary State Boards holds that veterinarians should be able to discuss CBD with clients, since clients can obtain these products elsewhere and are actively seeking guidance. Most states have no explicit ban on hemp-CBD use in animals, but few states protect veterinarians from board discipline for recommending it — leaving many practitioners cautious even where it isn't technically illegal. The AVMA published a comprehensive 'Cannabis in Veterinary Medicine' practitioner guide in 2026 summarizing the science, terminology, and regulatory status."
+        },
+        {
+          "heading": "State-level variation (verify current status before relying on it)",
+          "body": "Maryland's new law (effective October 1, 2026) protects veterinarians from professional discipline solely for discussing or recommending cannabis/CBD for animals — a speech-protection statute, not full legalization. State VMAs differ sharply: Michigan warns of added legal risk from adverse events; Connecticut has reportedly been told CBD is illegal for animal use; Oregon aligns with the FDA's unapproved-drug position; Illinois circulates guidance against disease-treatment claims; Oklahoma flags liability risk despite legality; several states (Colorado, New Jersey, Washington, Florida, Texas, New York, among others) have issued no formal position."
+        },
+        {
+          "heading": "Practical implications",
+          "body": "Never present a dose as a prescription — present it as 'study X used Y mg/kg for Z condition.' Flag state variability rather than assuming guidance is uniformly legal to relay. Distinguish CBD/hemp (federally descheduled, state-variable) from THC/marijuana (still Schedule I federally). Food animals are a categorical exception — see the Livestock tab."
+        }
+      ]
+    },
+    {
+      "id": "toxicity",
+      "label": "Emergency: THC Toxicity",
+      "sections": [
+        {
+          "heading": "This is not a dosing topic",
+          "body": "Any query describing a pet that may have ingested marijuana or a THC product should be treated as an emergency-medicine question, not a self-treatment question. Recommend immediate contact with a veterinarian, emergency clinic, or animal poison control — never a home-dosing or 'wait and see' response."
+        },
+        {
+          "heading": "Onset and clinical course",
+          "body": "Signs typically appear 30–60 minutes after ingestion. Classic presentation: depression/lethargy, ataxia, and dribbling urine, plus possible dilated pupils, slow heart rate, tremors, or (rarely) seizures. Effects usually last 18–24 hours in dogs, with recovery within 24–72 hours depending on dose. Death is extremely rare from THC alone — the two reported fatalities involved concentrated-THC butter in baked goods, a very different exposure scale than typical accidental ingestion. Synthetic cannabinoids carry a worse prognosis than plant-derived THC."
+        },
+        {
+          "heading": "Treatment (always requires a veterinarian)",
+          "body": "Supportive care: decontamination if very recent (induced vomiting or activated charcoal within roughly 1–2 hours, weighed against aspiration risk), IV fluids, temperature regulation, and monitoring. Medications for nausea, agitation, tremors, or seizures as indicated. IV lipid emulsion has been used successfully in at least one severe case. A 2024 case series reported transmucosal CBD-infused dissolving sheets resolved signs in six dogs with non-medical THC toxicosis — a promising but small-sample option."
+        },
+        {
+          "heading": "Co-ingestion red flags",
+          "body": "Edibles frequently contain chocolate and/or xylitol, both separately toxic to dogs. Any suspected THC edible ingestion should prompt the same urgency as a confirmed chocolate or xylitol ingestion."
+        }
+      ]
+    }
+  ]
+}

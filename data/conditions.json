@@ -1,0 +1,111 @@
+{
+  "_disclaimer": "Published-literature summary, not a formulary or prescription. Every entry must be presented with its evidence_tier and source. No entry here is an FDA-approved dose. Always recommend confirmation with a licensed veterinarian.",
+  "evidence_tiers": {
+    "A": "Randomized controlled trial in the target species/condition",
+    "B": "Non-randomized clinical study, case series, or single RCT not yet replicated",
+    "C": "Safety/tolerance study in healthy animals (not disease-specific efficacy)",
+    "D": "Consumer/practical guidance not sourced to a peer-reviewed study"
+  },
+  "species": {
+    "canine": {
+      "conditions": [
+        {
+          "condition": "osteoarthritis / chronic pain",
+          "evidence_tier": "A",
+          "dose_range": "2 mg/kg CBD, twice daily (studied range 2-8 mg/kg/day)",
+          "notes": "Studied as adjunct to conventional multimodal analgesia, not monotherapy replacement.",
+          "source": "Gamble et al. 2018, Frontiers in Veterinary Science"
+        },
+        {
+          "condition": "idiopathic epilepsy (drug-resistant)",
+          "evidence_tier": "A",
+          "dose_range": "Not uniformly reported as a single figure across trials; used as add-on to standard anti-epileptic drugs",
+          "notes": "CBD studied strictly as adjunct to existing AEDs, reduced seizure frequency vs. placebo in add-on arm.",
+          "source": "McGrath et al. 2019 JAVMA; Rozental et al. 2023 J Vet Intern Med (51 dogs, crossover)"
+        },
+        {
+          "condition": "atopic dermatitis / pruritus",
+          "evidence_tier": "B",
+          "dose_range": "Not independently published in detail here; single trial only",
+          "notes": "~65% of treated dogs showed >=50% reduction in itch/chew behavior; about half fully resolved. Single trial, not yet replicated.",
+          "source": "CannPal canine atopic dermatitis study, summarized by Cornell Riney Canine Health Center"
+        },
+        {
+          "condition": "general safety / long-term tolerance",
+          "evidence_tier": "C",
+          "dose_range": "~4 mg/kg/day well tolerated over 6 months; escalating-dose studies tolerated up to 10-20 mg/kg/day short-term",
+          "notes": "Recurring mild ALP elevation reported across studies; monitor liver enzymes on long courses.",
+          "source": "Bradley/Bakke et al. 2022 Frontiers in Vet Science; Deabold et al. 2019 Animals"
+        },
+        {
+          "condition": "general practical starting dose (consumer-guidance tier)",
+          "evidence_tier": "D",
+          "dose_range": "0.1-0.5 mg/kg, split BID, reassess at 5-7 days before increasing",
+          "notes": "Not RCT-sourced; typical of commercial pet-CBD product guidance.",
+          "source": "Aggregated pet-CBD dosing guides (multiple, non-peer-reviewed)"
+        }
+      ]
+    },
+    "feline": {
+      "conditions": [
+        {
+          "condition": "general safety / long-term tolerance",
+          "evidence_tier": "C",
+          "dose_range": "4 mg/kg/day THC-free CBD distillate, well tolerated over 26 weeks",
+          "notes": "Longest published feline CBD safety study. Persistent ALT elevation noted in at least one cat; monitor ALT at baseline and ~6 weeks.",
+          "source": "Coltherd et al. 2023/2024, Frontiers in Veterinary Science"
+        },
+        {
+          "condition": "acute tolerance ceiling (not a therapeutic dose)",
+          "evidence_tier": "C",
+          "dose_range": "single doses up to 80 mg/kg tolerated short-term",
+          "notes": "Safety-study ceiling only; do not present as a treatment recommendation.",
+          "source": "Short-term feline escalating-dose safety studies (see 03-feline.md)"
+        },
+        {
+          "condition": "any specific feline disease (osteoarthritis, CKD-related inflammation, etc.)",
+          "evidence_tier": "D",
+          "dose_range": "no disease-specific efficacy RCT yet published in cats",
+          "notes": "Major evidence gap - flag explicitly rather than extrapolate from dog data or healthy-cat safety data.",
+          "source": "n/a - stated as a gap"
+        },
+        {
+          "condition": "general practical starting dose (consumer-guidance tier)",
+          "evidence_tier": "D",
+          "dose_range": "0.1-0.5 mg/kg, start low, cats are more sensitive than dogs",
+          "notes": "Conflicts with some consumer sources claiming cats need 2x the per-lb dog dose; peer-reviewed safety data supports starting low, not high.",
+          "source": "Aggregated pet-CBD dosing guides (multiple, non-peer-reviewed)"
+        }
+      ]
+    },
+    "equine": {
+      "conditions": [
+        {
+          "condition": "osteoarthritis / lameness pain",
+          "evidence_tier": "B",
+          "dose_range": "0.5-3 mg/kg studied across pharmacokinetic and small clinical trials",
+          "notes": "No confirmed synovial fluid penetration of CBD despite joint-relief marketing; CBDA reaches much higher serum levels than CBD at equivalent oral dose.",
+          "source": "Interlandi et al. 2024; Yocom/Contino et al.; 2025 AJVR chronic dosing safety study"
+        },
+        {
+          "condition": "competition / performance horses",
+          "evidence_tier": "n/a - regulatory, not clinical",
+          "dose_range": "n/a",
+          "notes": "FEI reclassified CBD/CBDA from prohibited to controlled medication in 2022; detection can still trigger an adverse analytical finding. Always check competition status before recommending.",
+          "source": "Frontiers in Vet Science, Connemara pony PK study, 2026"
+        }
+      ]
+    },
+    "livestock_food_animals": {
+      "conditions": [
+        {
+          "condition": "any condition, any food-producing species (cattle, swine, poultry, sheep, goats, etc.)",
+          "evidence_tier": "n/a - not legally approved",
+          "dose_range": "NONE - no FDA/AAFCO-approved cannabinoid ingredient exists for food-producing animals",
+          "notes": "Do not provide a dose. State clearly that no ingredient is approved, cite human food-residue concern, refer to state department of agriculture / feed control office.",
+          "source": "AAFCO position statements; FDA-CVM feed ingredient approval status; CDFA HempCBD Notice"
+        }
+      ]
+    }
+  }
+}
