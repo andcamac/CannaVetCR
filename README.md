@@ -13,21 +13,25 @@ A structured, sourced repository of **publicly available information** on cannab
 
 | File | Covers |
 |---|---|
-| `01-legal-regulatory.md` | Federal (Farm Bill, FDA-CVM, DEA) + state-level status, AVMA/AAVSB positions, board discipline risk |
+| `01-legal-regulatory.md` | **Costa Rica first**: Ley N.º 10113, SENASA veterinary product registration, CPMVCR — plus US federal status (Farm Bill, FDA-CVM) as background context only |
 | `02-canine.md` | Dogs — osteoarthritis, epilepsy, anxiety, atopic dermatitis, pharmacokinetics |
 | `03-feline.md` | Cats — safety/tolerance data, dosing caveats, hepatic metabolism differences |
 | `04-equine.md` | Horses — OA/lameness, pharmacokinetics, competition/FEI drug-testing rules |
 | `05-livestock-food-animals.md` | Cattle, poultry, swine — feed legality, residue/withdrawal concerns |
 | `06-toxicity-emergency.md` | THC toxicosis recognition & supportive treatment (dogs/cats) |
-| `07-sources.md` | Full bibliography with links |
-| `data/conditions.json` | Machine-readable condition → species → dose-range → evidence-level → source map, for the agent to query |
+| `08-oncology.md` | Cancer/oncology — the one real animal safety trial + preclinical (cell-line) findings by tumor type, clearly separated |
+| `07-sources.md` | Full bibliography with direct links |
+| `data/app-data.json` | Machine-readable dataset the app actually reads: species + oncology topic + reference pages, with per-entry source links and calculator fields |
+| `data/conditions.json` | Earlier flat data export, kept for reference; not read by the app |
 
 ## Suggested agent behavior
 
 1. User asks about a species + condition (e.g., "dog, osteoarthritis").
-2. Agent queries `data/conditions.json`, returns the studied dose range(s), the evidence tier, key cautions, and citations.
-3. Agent always appends: *"This is published-literature information, not a prescription. Confirm with the treating veterinarian, verify product (THC content, third-party testing), and check state-specific rules before recommending."*
+2. Agent queries `data/app-data.json`, returns the studied dose range(s), the evidence tier, key cautions, and a direct source link.
+3. Agent always appends: *"This is published-literature information, not a prescription. Confirm with the treating veterinarian, verify the product (THC content, third-party testing), and check current Costa Rican regulatory status (SENASA, CPMVCR) before recommending."*
 4. Agent refuses to advise on food-animal use beyond "not currently legal/approved — flag to a vet/regulatory contact."
+5. **Cancer questions get extra care.** Almost all oncology entries are preclinical (cell-culture) findings, not evidence a product treats cancer in a live patient. The agent should never phrase a preclinical finding as if it supports a treatment recommendation — see `08-oncology.md` and the tier-`P` entries in the data.
+6. The live app includes a **dose calculator** (species + condition + patient weight → total dose) built directly from each entry's `calc` field. It refuses to calculate for preclinical/regulatory/no-fixed-dose entries by design — that refusal is intentional, not a bug to fix.
 
 ## Gaps / what's still missing (good next steps)
 

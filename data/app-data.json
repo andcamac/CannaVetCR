@@ -2,14 +2,16 @@
   "meta": {
     "title": "Cannabis & Veterinary Reference",
     "subtitle": "Prototype lookup tool — literature summary, not a formulary",
-    "disclaimer": "This tool summarizes findings from published veterinary literature and regulatory sources. No entry is an FDA-approved dose or a prescription. Always confirm with the treating veterinarian, verify the product (THC content, third-party testing), and check current state-specific rules before acting on anything shown here.",
+    "disclaimer": "This tool summarizes findings from published veterinary literature and regulatory sources, with direct links so any figure can be checked at the source. No entry is an approved dose or a prescription. Always confirm with the treating veterinarian, verify the product (THC content, third-party testing), and check current Costa Rican regulatory status before acting on anything shown here.",
     "tiers": {
       "A": "Randomized controlled trial in the target species and condition",
       "B": "Non-randomized clinical study, case series, or a single RCT not yet replicated",
       "C": "Safety / tolerance study in healthy animals — not disease-specific efficacy",
       "D": "Consumer or practical guidance not sourced to a peer-reviewed study",
+      "P": "Preclinical only — in vitro cell-line or rodent-model data, not tested in live veterinary patients",
       "R": "Regulatory status — not a clinical evidence question"
-    }
+    },
+    "verificationNote": "Every citation below links directly to PubMed, PMC, or the publisher. A representative sample across categories (osteoarthritis, oncology, toxicosis, regulatory) was individually opened and checked against the live page while building this tool (September 2026); the rest use the same standard PubMed/PMC URL pattern. Click through and confirm before relying on any single figure clinically — this is a prototype, not a maintained formulary."
   },
   "species": [
     {
@@ -24,7 +26,9 @@
           "dose": "2 mg/kg, twice daily",
           "doseNote": "studied range 2–8 mg/kg/day",
           "notes": "Studied as an adjunct to conventional multimodal analgesia (e.g. NSAIDs), not as a monotherapy replacement. This is the most-cited canine CBD efficacy study.",
-          "source": "Gamble et al. 2018, Frontiers in Veterinary Science"
+          "source": "Gamble et al. 2018, Frontiers in Veterinary Science",
+          "sourceUrl": "https://doi.org/10.3389/fvets.2018.00165",
+          "calc": { "doseMgKgLow": 2, "doseMgKgHigh": 2, "freqPerDay": 2, "calcNote": "Primary trial dose; tolerance work has gone up to 8 mg/kg/day." }
         },
         {
           "id": "canine-epilepsy",
@@ -33,7 +37,9 @@
           "dose": "Add-on to existing AEDs",
           "doseNote": "no single figure standardized across trials",
           "notes": "CBD studied strictly as an add-on to standard anti-epileptic drugs. Reduced seizure frequency vs. placebo in the add-on arm across two independent trials.",
-          "source": "McGrath et al. 2019 JAVMA; Rozental et al. 2023 J Vet Intern Med (51 dogs, crossover)"
+          "source": "McGrath et al. 2019 JAVMA 254(11):1301-1308; Rozental et al. 2023 J Vet Intern Med 37(6):2291-2300 (51 dogs, crossover)",
+          "sourceUrl": "https://doi.org/10.2460/javma.254.11.1301",
+          "calc": null
         },
         {
           "id": "canine-derm",
@@ -42,16 +48,20 @@
           "dose": "Not independently published in detail",
           "doseNote": "single trial only",
           "notes": "About 65% of treated dogs showed ≥50% reduction in itch/chew behavior, roughly half fully resolved. A single trial — not yet replicated — so treat this as promising but preliminary.",
-          "source": "CannPal canine atopic dermatitis study, summarized by Cornell Riney Canine Health Center"
+          "source": "CannPal canine atopic dermatitis study, summarized by Cornell Riney Canine Health Center",
+          "sourceUrl": "https://www.vet.cornell.edu/departments-centers-and-institutes/riney-canine-health-center/canine-health-information/cannabidiol-cbd",
+          "calc": null
         },
         {
           "id": "canine-safety",
           "condition": "General safety / long-term tolerance",
           "tier": "C",
           "dose": "~4 mg/kg/day",
-          "doseNote": "well tolerated over 6 months; escalation studies tolerated 10–20 mg/kg/day short-term",
-          "notes": "Recurring mild ALP (liver enzyme) elevation reported across several studies. Baseline and periodic bloodwork is a reasonable safeguard on any multi-week course.",
-          "source": "Bradley/Bakke et al. 2022 Frontiers in Vet Science; Deabold et al. 2019 Animals"
+          "doseNote": "well tolerated over 6 months; escalation studies tolerated 10–20 mg/kg/day short-term; a separate 90-day NASC study used 5 mg/kg/day",
+          "notes": "Recurring mild ALP (liver enzyme) elevation reported across several studies. Baseline and periodic bloodwork is a reasonable safeguard on any multi-week course. A 2-week teaching-colony study also found 2–4 mg/kg every 12 h well tolerated with no behavioral change.",
+          "source": "Bradley/Bakke et al. 2022 Frontiers in Vet Science; Deabold et al. 2019 Animals 9(10):832; teaching-colony tolerability study, PMC11240743",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11240743/",
+          "calc": { "doseMgKgLow": 2, "doseMgKgHigh": 4, "freqPerDay": 2, "calcNote": "Well-tolerated safety range; not an efficacy dose for a specific condition." }
         },
         {
           "id": "canine-practical",
@@ -60,7 +70,9 @@
           "dose": "0.1–0.5 mg/kg",
           "doseNote": "split BID, reassess at 5–7 days before increasing",
           "notes": "Not sourced to a controlled trial — typical of commercial pet-CBD product guidance. Present with lower confidence than the tiers above.",
-          "source": "Aggregated pet-CBD dosing guides (non-peer-reviewed)"
+          "source": "Aggregated pet-CBD dosing guides (non-peer-reviewed)",
+          "sourceUrl": "",
+          "calc": { "doseMgKgLow": 0.1, "doseMgKgHigh": 0.5, "freqPerDay": 2, "calcNote": "Consumer-guidance tier, not RCT-sourced." }
         }
       ]
     },
@@ -76,7 +88,9 @@
           "dose": "4 mg/kg/day",
           "doseNote": "THC-free CBD distillate, well tolerated over 26 weeks",
           "notes": "Longest published feline CBD safety study to date. Persistent ALT elevation was noted in at least one cat — monitor ALT at baseline and again around 6 weeks.",
-          "source": "Coltherd et al. 2023/2024, Frontiers in Veterinary Science"
+          "source": "Coltherd et al. 2023/2024, Frontiers in Veterinary Science 10:1324622",
+          "sourceUrl": "https://doi.org/10.3389/fvets.2023.1324622",
+          "calc": { "doseMgKgLow": 4, "doseMgKgHigh": 4, "freqPerDay": 1, "calcNote": "26-week tolerance dose in healthy cats." }
         },
         {
           "id": "feline-ceiling",
@@ -85,7 +99,9 @@
           "dose": "up to 80 mg/kg",
           "doseNote": "single dose, short-term tolerance study only",
           "notes": "This is a safety-study ceiling, not a treatment recommendation. Do not present this figure as a dosing target.",
-          "source": "Short-term feline escalating-dose safety studies"
+          "source": "Kulpa et al. 2021, J Feline Med Surg 23(12):1162-1175 — escalating cannabinoid dose safety study",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33769105/",
+          "calc": null
         },
         {
           "id": "feline-disease",
@@ -93,8 +109,10 @@
           "tier": "D",
           "dose": "No disease-specific efficacy RCT published yet",
           "doseNote": "major evidence gap",
-          "notes": "There is currently much better evidence that CBD is tolerated in healthy cats than that it is effective for any specific feline disease. Flag this gap explicitly rather than extrapolating from dog data.",
-          "source": "Stated as an evidence gap — no source to cite"
+          "notes": "There is currently much better evidence that CBD is tolerated in healthy cats than that it is effective for any specific feline disease. A single case report describes CBD+THC used as analgesic therapy in one cat with chronic osteoarthritic pain — a case of one, not trial evidence.",
+          "source": "Stated as an evidence gap; case report: Gutierre et al. 2023, Vet Med Sci 9:1021-1025",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37002652/",
+          "calc": null
         },
         {
           "id": "feline-practical",
@@ -103,7 +121,9 @@
           "dose": "0.1–0.5 mg/kg",
           "doseNote": "start low — cats are more sensitive than dogs",
           "notes": "Some consumer sources claim cats need roughly 2x the per-pound dog dose. This conflicts with the peer-reviewed safety data, which supports starting low. Surface the peer-reviewed 4 mg/kg tolerance data as the more authoritative reference point.",
-          "source": "Aggregated pet-CBD dosing guides (non-peer-reviewed)"
+          "source": "Aggregated pet-CBD dosing guides (non-peer-reviewed)",
+          "sourceUrl": "",
+          "calc": { "doseMgKgLow": 0.1, "doseMgKgHigh": 0.5, "freqPerDay": 2, "calcNote": "Consumer-guidance tier, not RCT-sourced." }
         }
       ]
     },
@@ -117,9 +137,11 @@
           "condition": "Osteoarthritis / lameness pain",
           "tier": "B",
           "dose": "0.5–3 mg/kg",
-          "doseNote": "studied across pharmacokinetic and small clinical trials",
+          "doseNote": "studied across pharmacokinetic and small clinical trials; frequency varies by study (single-dose PK vs. BID clinical protocols)",
           "notes": "No confirmed synovial-fluid penetration of CBD despite joint-relief marketing claims. CBDA reaches substantially higher serum concentrations than CBD at an equivalent oral dose.",
-          "source": "Interlandi et al. 2024; Yocom/Contino et al.; 2025 AJVR chronic dosing safety study"
+          "source": "Interlandi et al. 2024, Frontiers in Vet Science 11:1341396; Yocom/Contino et al. 2022, J Equine Vet Sci 113:103933; 2025 AJVR chronic dosing safety study",
+          "sourceUrl": "https://doi.org/10.3389/fvets.2024.1341396",
+          "calc": { "doseMgKgLow": 0.5, "doseMgKgHigh": 3, "freqPerDay": 2, "calcNote": "Range spans single-dose PK studies (lower end) to repeated-dose clinical protocols (upper end) — confirm which the source study used before applying." }
         },
         {
           "id": "equine-competition",
@@ -128,7 +150,9 @@
           "dose": "Not a dosing question — regulatory",
           "doseNote": "check competition status first",
           "notes": "FEI reclassified CBD/CBDA from prohibited to controlled medication in 2022. Detection can still trigger an adverse analytical finding under the new classification. Always check competition status before recommending any cannabinoid product for a performance horse.",
-          "source": "Frontiers in Veterinary Science, Connemara pony PK study, 2026"
+          "source": "Frontiers in Veterinary Science, Connemara pony PK study, 2026",
+          "sourceUrl": "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1813917/full",
+          "calc": null
         }
       ]
     },
@@ -142,9 +166,137 @@
           "condition": "Any condition, any food-producing species",
           "tier": "R",
           "dose": "Not approved — no dose exists",
-          "doseNote": "no FDA/AAFCO-approved cannabinoid ingredient",
-          "notes": "Do not provide a dose. No hemp or cannabis ingredient is currently FDA/AAFCO-approved for food-producing animals, due to concern about cannabinoid residue carrying over into meat, milk, or eggs. Refer to the state department of agriculture or feed control office for current status. This applies even to a 'pet' animal (e.g. a backyard hen) if its products could enter the food supply.",
-          "source": "AAFCO position statements; FDA-CVM feed ingredient approval status; CDFA HempCBD Notice"
+          "doseNote": "no FDA/AAFCO-approved cannabinoid ingredient in the US; separately not approved for feed use in Costa Rica",
+          "notes": "Do not provide a dose. No hemp or cannabis ingredient is approved for food-producing animals in the US (FDA/AAFCO) or under Costa Rica's Ley 10113 framework, due to concern about cannabinoid residue carrying over into meat, milk, or eggs. Refer to SENASA / the Ministerio de Agricultura y Ganadería for current Costa Rican status.",
+          "source": "AAFCO position statements; FDA-CVM feed ingredient approval status; CDFA HempCBD Notice",
+          "sourceUrl": "https://www.cdfa.ca.gov/is/ffldrs/pdfs/HempCBD-Notice.pdf",
+          "calc": null
+        }
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "id": "oncology",
+      "label": "Cancer / Oncology",
+      "commonName": "Predominantly canine — mostly preclinical (cell-line) evidence",
+      "conditions": [
+        {
+          "id": "onc-chemo-safety",
+          "condition": "Safety alongside chemotherapy (canine lymphoma, CHOP protocol)",
+          "tier": "A",
+          "dose": "5 mg/kg CBD/CBDA-rich hemp, every 12 h",
+          "doseNote": "during one cycle of CHOP chemotherapy",
+          "notes": "IMPORTANT: this is a safety/pharmacokinetic RCT, not a tumor-response trial. 25 dogs enrolled, 19 completed. CBD/CBDA supplementation did not significantly affect doxorubicin exposure (AUC) and caused no significant increase in hematologic or biochemical adverse events vs. placebo. It shows CBD/CBDA can likely be added to a CHOP protocol without disrupting chemo drug levels or adding toxicity — it does NOT show CBD treats, shrinks, or cures lymphoma.",
+          "source": "Lejeune et al. 2025, J Vet Intern Med 39(4):e70179",
+          "sourceUrl": "https://doi.org/10.1111/jvim.70179",
+          "calc": { "doseMgKgLow": 5, "doseMgKgHigh": 5, "freqPerDay": 2, "calcNote": "Safety dose used alongside one CHOP cycle — not evidence this dose affects tumor outcome." }
+        },
+        {
+          "id": "onc-lymphoma-invitro",
+          "condition": "Lymphoma — cell-line studies",
+          "tier": "P",
+          "dose": "Preclinical only — not a dose",
+          "doseNote": "in vitro cannabinoid concentrations, not an animal dose",
+          "notes": "CBD, THC, and the synthetic agonist WIN 55,212-2 reduced viability of canine B-cell (1771, CLBL-1) and T-cell (CL-1) non-Hodgkin lymphoma cell lines in culture, with CBD often the most potent. A separate study found canine NHL cells respond to the endocannabinoids AEA and 2-AG, with higher CB1/CB2 expression in B-cell lines. Cell-culture concentrations (µM) cannot be converted to an oral mg/kg dose — do not extrapolate a treatment dose from this.",
+          "source": "PMID 38672512 (CBD/THC/WIN55212-2 on canine NHL lines); PMID 37330042 (endocannabinoids on canine NHL cells)",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38672512/",
+          "calc": null,
+          "inVitroOnly": true
+        },
+        {
+          "id": "onc-mammary-invitro",
+          "condition": "Mammary carcinoma — cell-line studies",
+          "tier": "P",
+          "dose": "Preclinical only — not a dose",
+          "doseNote": "in vitro cannabinoid concentrations, not an animal dose",
+          "notes": "Primary canine mammary carcinoma (CMC) cells over-express CB1, CB2, TRPV1, GPR55, and PPAR-α. CBD at 10–20 µM lowered inflammatory markers (COX-2, IL-6, TNF-α) without killing the cells at those concentrations. A separate study using a CBD-loaded nanoemulsion in CF41.Mg and IPC366 canine mammary carcinoma cell lines reduced viability, increased apoptosis, and reduced migration/invasion, with less toxicity to normal (MDCK) kidney cells than to the cancer lines. Both are cell-culture findings, not a treatment protocol.",
+          "source": "PMID 42078490 (ECS modulation, inflammatory signaling); PMID 40870993 / PMC12389271 (CBD nanoemulsion)",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40870993/",
+          "calc": null,
+          "inVitroOnly": true
+        },
+        {
+          "id": "onc-prostate-invitro",
+          "condition": "Prostate carcinoma — cell-line studies",
+          "tier": "P",
+          "dose": "Preclinical only — not a dose",
+          "doseNote": "IC50 roughly 3.4–3.6 µM (CBD-rich extract) and 4.5–4.9 µM (THC-rich extract) in culture",
+          "notes": "CBD-rich and THC-rich cannabis extracts reduced viability of canine prostate carcinoma cell lines (PC1/PC2), with cell death confirmed by annexin V/PI staining. A cell-culture IC50 is a concentration that kills half the cells in a dish over a fixed exposure time — it is not translatable to an oral mg/kg dose in a live dog.",
+          "source": "PMID 39453093 / PMC11512242",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39453093/",
+          "calc": null,
+          "inVitroOnly": true
+        },
+        {
+          "id": "onc-urothelial-invitro",
+          "condition": "Urothelial (bladder) carcinoma — cell-line studies",
+          "tier": "P",
+          "dose": "Preclinical only — not a dose",
+          "doseNote": "in vitro cannabinoid concentrations, not an animal dose",
+          "notes": "CBD alone reduced viability and induced apoptosis in canine urothelial carcinoma cells, with synergy observed when combined with mitoxantrone or vinblastine — but not with carboplatin. This is the kind of finding that motivates future combination-therapy research; it is not evidence that CBD alone treats bladder cancer in a dog.",
+          "source": "PMID 34352013 / PMC8341525",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34352013/",
+          "calc": null,
+          "inVitroOnly": true
+        },
+        {
+          "id": "onc-mixed-invitro",
+          "condition": "Mixed canine tumor lines (osteosarcoma, mammary, lymphoma, others)",
+          "tier": "P",
+          "dose": "Preclinical only — not a dose",
+          "doseNote": "in vitro cannabinoid concentrations, not an animal dose",
+          "notes": "Across five canine neoplastic cell lines, CBD was far more potent than CBDA at reducing proliferation, working through autophagy followed by apoptosis. CBD showed synergistic or additive effects with vincristine, and mixed (not consistently additive) results when combined with doxorubicin.",
+          "source": "PMID 33247539",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33247539/",
+          "calc": null,
+          "inVitroOnly": true
+        },
+        {
+          "id": "onc-glioma",
+          "condition": "Glioma — cell-line and mouse xenograft studies",
+          "tier": "P",
+          "dose": "Preclinical only — not a dose",
+          "doseNote": "cytotoxicity range 4.9–8.2 µg/mL in culture (canine cells more sensitive than human in this assay)",
+          "notes": "CBD induced apoptosis and disrupted mitochondrial function (via the VDAC1 channel) in both canine and human glioma cell lines in culture. A separate study transplanted a canine glioma line (J3TBG) into immunodeficient mice and combined CBD with radiation therapy; treated mice trended toward longer survival than radiation alone, but the difference was not statistically significant in that small study. This is mouse-model and cell-culture evidence, not a canine clinical trial.",
+          "source": "Gross et al. 2021, Front Pharmacol 12:725136; mouse xenograft + radiation study, PMC12390246",
+          "sourceUrl": "https://doi.org/10.3389/fphar.2021.725136",
+          "calc": null,
+          "inVitroOnly": true
+        },
+        {
+          "id": "onc-mct-markers",
+          "condition": "Mast cell tumors — endocannabinoid system as a biomarker (not a treatment study)",
+          "tier": "P",
+          "dose": "Not applicable — biomarker research, not a treatment",
+          "doseNote": "",
+          "notes": "These studies looked at how the endocannabinoid system behaves in mast cell tumor tissue, not at treating tumors with cannabinoids. CB2 receptor staining was higher in lower-grade cutaneous mast cell tumors. Dogs with cutaneous mast cell tumors had higher circulating 2-AG and lower AEA and PEA than healthy dogs, suggesting 2-AG as a possible biomarker worth further study.",
+          "source": "PMID 38130452 (CB2 immunoreactivity); PMID 39457916 / PMC11503820 (circulating endocannabinoids)",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39457916/",
+          "calc": null,
+          "inVitroOnly": true
+        },
+        {
+          "id": "onc-perioperative",
+          "condition": "Perioperative use — anesthesia-sparing (mammary tumor / OHE surgery)",
+          "tier": "B",
+          "dose": "Not detailed in the source summary",
+          "doseNote": "full-spectrum cannabis oil, perioperative",
+          "notes": "In female dogs undergoing mastectomy for mammary neoplasia (combined with ovariohysterectomy), perioperative full-spectrum CBD/THC oil reduced the amount of propofol and sevoflurane needed. This is a supportive/anesthetic finding, not an antitumor one — it may still be clinically useful for surgical planning.",
+          "source": "PMC13303699",
+          "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13303699/",
+          "calc": null
+        },
+        {
+          "id": "onc-reviews",
+          "condition": "Review articles (start here for an overview)",
+          "tier": "P",
+          "dose": "Not applicable — these are reviews, not primary studies",
+          "doseNote": "",
+          "notes": "Two recent reviews summarize this whole field: a 2025 review on the endocannabinoid system's role in companion-animal oncology, and a 2026 systematic review specifically on CBD's potential antitumor effect in canine oncology (lymphoma, mammary, glioma, prostate, osteosarcoma, urothelial — mostly preclinical). Bottom line from both: lab studies repeatedly show CBD can reduce viability of several canine cancer cell types, sometimes with chemotherapy synergy, but there is not yet strong published evidence that cannabis products shrink or cure cancer in client-owned dogs. The lymphoma CHOP trial above only supports short-term tolerability alongside chemo — not tumor response.",
+          "source": "della Rocca et al. 2025, Animals 15(15):2185; systematic review, Front Vet Sci 2026, PMID 42254894",
+          "sourceUrl": "https://doi.org/10.3390/ani15152185",
+          "calc": null
         }
       ]
     }
@@ -152,23 +304,39 @@
   "referencePages": [
     {
       "id": "legal",
-      "label": "Legal & Regulatory",
+      "label": "Legal & Regulatory (Costa Rica)",
       "sections": [
         {
-          "heading": "Federal status",
-          "body": "The 2018 Farm Bill descheduled hemp (≤0.3% THC) from the Controlled Substances Act's definition of marijuana, but created no approval pathway for hemp-derived ingredients in animal food or drugs. FDA's Center for Veterinary Medicine considers CBD/hemp products marketed with therapeutic claims to be unapproved new animal drugs — no cannabinoid product currently has FDA approval for veterinary use. In 2025 the FDA opened a public request-for-information docket on cannabis-derived veterinary products, with possible formal compliance standards or enforcement action in 2026. In April 2025 the FDA sent warning letters to four pet-CBD manufacturers over illegal disease-treatment claims, including cancer claims."
+          "heading": "The governing law: Ley N.º 10113 (2022)",
+          "body": "Costa Rica's cannabis framework is Ley N.º 10113, \"Ley del Cannabis para Uso Medicinal y Terapéutico y del Cáñamo para Uso Alimentario e Industrial,\" signed March 2, 2022. It creates two tracks: (1) psychoactive medicinal/therapeutic cannabis for human patients — any licensed physician (Colegio de Médicos y Cirujanos) can prescribe it, not just specialists; and (2) industrial/food-use hemp (cáñamo), which Costa Rican law defines as cannabis with less than 1% THC — a higher threshold than the US 0.3% standard, which matters for any product imported from the US.",
+          "links": [{"label": "Ley N.º 10113, full text (PGR SCIJ)", "url": "https://pgrweb.go.cr/scij/Busqueda/Normativa/Normas/nrm_texto_completo.aspx?param1=NRTC&nValor1=1&nValor2=96518&nValor3=130412&strTipM=TC"}]
         },
         {
-          "heading": "AVMA / veterinary association position",
-          "body": "The American Association of Veterinary State Boards holds that veterinarians should be able to discuss CBD with clients, since clients can obtain these products elsewhere and are actively seeking guidance. Most states have no explicit ban on hemp-CBD use in animals, but few states protect veterinarians from board discipline for recommending it — leaving many practitioners cautious even where it isn't technically illegal. The AVMA published a comprehensive 'Cannabis in Veterinary Medicine' practitioner guide in 2026 summarizing the science, terminology, and regulatory status."
+          "heading": "Implementation timeline and who regulates what",
+          "body": "The law passed in 2022 but sat largely dormant as a paper framework. The implementing regulation (Reglamento) was approved in February 2025, the product technical standard RTCR 515:2024 has been in force since June 2025, and a seed-to-sale traceability mandate is phasing in with full compliance due around February 2027. Three authorities share oversight: MAG (Ministerio de Agricultura y Ganadería) handles cultivation/production licensing and seed approval; the Ministerio de Salud handles medical product registration; and the ICD (Instituto Costarricense sobre Drogas) handles control and traceability.",
+          "links": [{"label": "Reglamento del Cannabis para Uso Medicinal y Terapéutico", "url": "https://vlex.co.cr/vid/reglamento-cannabis-uso-medicinal-1094373332"}]
         },
         {
-          "heading": "State-level variation (verify current status before relying on it)",
-          "body": "Maryland's new law (effective October 1, 2026) protects veterinarians from professional discipline solely for discussing or recommending cannabis/CBD for animals — a speech-protection statute, not full legalization. State VMAs differ sharply: Michigan warns of added legal risk from adverse events; Connecticut has reportedly been told CBD is illegal for animal use; Oregon aligns with the FDA's unapproved-drug position; Illinois circulates guidance against disease-treatment claims; Oklahoma flags liability risk despite legality; several states (Colorado, New Jersey, Washington, Florida, Texas, New York, among others) have issued no formal position."
+          "heading": "Where veterinary use fits — and where it doesn't yet",
+          "body": "Ley 10113 is written around human medicinal use; it does not explicitly authorize veterinarians to prescribe psychoactive cannabis for animal patients the way it authorizes physicians for human patients. (For comparison: Argentina's cannabis regulation was explicitly amended in 2023 to add veterinary use as one of six authorized categories — Costa Rica's law has no equivalent express provision as of this research, September 2026.) Separately, though, SENASA's Dirección de Medicamentos Veterinarios (under MAG) runs a general veterinary product registration pathway, and at least one THC-free, hemp-derived CBD product for dogs and cats is already commercially registered through it — for example, a pet CBD oil carrying SENASA/MAG registration number LIC DAA-MAG 155-659. In practice: THC-free hemp/CBD pet products can reach the Costa Rican market through the standard veterinary product registry, while psychoactive (THC-containing) cannabis use in animals sits in a genuine legal gray area that Ley 10113 does not explicitly address.",
+          "links": [{"label": "SENASA — Dirección de Medicamentos Veterinarios", "url": "http://www.senasa.go.cr/133-cat-institucion/cat-organizacion/cat-direcciones-nacionales/direccion-de-medicamentos-veterinarios"}]
         },
         {
-          "heading": "Practical implications",
-          "body": "Never present a dose as a prescription — present it as 'study X used Y mg/kg for Z condition.' Flag state variability rather than assuming guidance is uniformly legal to relay. Distinguish CBD/hemp (federally descheduled, state-variable) from THC/marijuana (still Schedule I federally). Food animals are a categorical exception — see the Livestock tab."
+          "heading": "Recreational status and enforcement",
+          "body": "Recreational marijuana use and possession remain illegal in Costa Rica; only the medicinal/therapeutic and industrial/food hemp tracks under Ley 10113 are lawful. Police commonly do not pursue simple possession of small amounts in practice, but this is enforcement discretion, not legal authorization — it is not a basis for a clinical recommendation."
+        },
+        {
+          "heading": "Practical implications for the clinic",
+          "body": "For THC-free CBD/hemp products: confirm the specific product carries a valid SENASA/MAG veterinary registration before recommending or selling it — a product registered with the FDA in the US is not automatically registered in Costa Rica. For anything containing THC: there is no explicit legal pathway for veterinary prescribing under current law; treat it as an open legal question rather than a recommendation to make. If a client wants to use their own physician-prescribed human medicinal-cannabis product (obtained under Ley 10113) on a pet, that use falls outside the animal-health regulatory framework entirely — flag both the legal gap and the toxicity risk (see the Emergency: THC Toxicity page). Because implementation is still rolling out through 2027, confirm current status directly with SENASA or the Colegio de Profesionales en Medicina Veterinaria de Costa Rica (CPMVCR) before relying on anything here for a specific case. No public CPMVCR position statement on cannabis/CBD specifically was found during this research (September 2026) — that is an absence of a public statement, not confirmation that none exists; it's worth asking the Colegio directly.",
+          "links": [{"label": "Colegio de Profesionales en Medicina Veterinaria de Costa Rica", "url": "https://colegioveterinarios.or.cr/"}]
+        },
+        {
+          "heading": "Note: literature vs. jurisdiction",
+          "body": "Most of the dosing and safety evidence cited throughout this app comes from US, European, and other international veterinary research — that's simply where most of the published studies originate, and it's a separate question from which regulator has legal authority in Costa Rica. The US FDA/AAFCO material below is included as background context (e.g. it explains why some cannabis-cancer marketing claims are treated as illegal in the US), not because the FDA has any jurisdiction here."
+        },
+        {
+          "heading": "For reference: US federal framework",
+          "body": "The 2018 Farm Bill descheduled US hemp (≤0.3% THC) but created no approval pathway for hemp-derived ingredients in animal food or drugs. FDA's Center for Veterinary Medicine treats CBD/hemp products marketed with therapeutic claims as unapproved new animal drugs — no cannabinoid product currently has FDA approval for veterinary use, and in April 2025 the FDA sent warning letters to four pet-CBD manufacturers over illegal disease-treatment claims, including cancer claims. This is the regulatory backdrop for why the Oncology section above is framed so carefully around \"preclinical only, not a treatment claim.\""
         }
       ]
     },
@@ -182,11 +350,13 @@
         },
         {
           "heading": "Onset and clinical course",
-          "body": "Signs typically appear 30–60 minutes after ingestion. Classic presentation: depression/lethargy, ataxia, and dribbling urine, plus possible dilated pupils, slow heart rate, tremors, or (rarely) seizures. Effects usually last 18–24 hours in dogs, with recovery within 24–72 hours depending on dose. Death is extremely rare from THC alone — the two reported fatalities involved concentrated-THC butter in baked goods, a very different exposure scale than typical accidental ingestion. Synthetic cannabinoids carry a worse prognosis than plant-derived THC."
+          "body": "Signs typically appear 30–60 minutes after ingestion. In the largest published case series (223 dogs, JAVMA 2024), the most common signs were ataxia (88.3%), hyperesthesia (75.3%), lethargy (62.5%), urinary incontinence (45.7%), and vomiting (26%); mild hyperkalemia and mild ionized hypercalcemia were common on bloodwork, vitals were often normal, and survival was 100% — 22 of the 223 dogs required hospitalization. Effects usually last 18–24 hours, with recovery within 24–72 hours depending on dose. Death is extremely rare from THC alone — the two reported fatalities involved concentrated-THC butter in baked goods, a very different exposure scale than typical accidental ingestion. Synthetic cannabinoids carry a worse prognosis than plant-derived THC.",
+          "links": [{"label": "Binagia et al. 2024, JAVMA 262(8):1047-1054 — 223 cases", "url": "https://pubmed.ncbi.nlm.nih.gov/38608656/"}]
         },
         {
           "heading": "Treatment (always requires a veterinarian)",
-          "body": "Supportive care: decontamination if very recent (induced vomiting or activated charcoal within roughly 1–2 hours, weighed against aspiration risk), IV fluids, temperature regulation, and monitoring. Medications for nausea, agitation, tremors, or seizures as indicated. IV lipid emulsion has been used successfully in at least one severe case. A 2024 case series reported transmucosal CBD-infused dissolving sheets resolved signs in six dogs with non-medical THC toxicosis — a promising but small-sample option."
+          "body": "Supportive care: decontamination if very recent (induced vomiting or activated charcoal within roughly 1–2 hours, weighed against aspiration risk), IV fluids, temperature regulation, and monitoring. Medications for nausea, agitation, tremors, or seizures as indicated. IV lipid emulsion has been used successfully in at least one severe case. A 2024 case series reported transmucosal CBD-infused dissolving sheets resolved signs in six dogs with non-medical THC toxicosis — a promising but small-sample option.",
+          "links": [{"label": "Marsigliano et al. 2024, Front Vet Sci — transmucosal CBD sheets case series", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11667118/"}]
         },
         {
           "heading": "Co-ingestion red flags",

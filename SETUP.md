@@ -53,18 +53,19 @@ npx serve .
 
 ```
 cannabis-vet-kb/
-├── index.html                     # the app
+├── index.html                     # the app (search, per-species lookup, Cancer/Oncology, dose calculator)
 ├── data/
-│   ├── app-data.json              # data the app reads (species, conditions, reference pages)
-│   └── conditions.json            # original flat data export (reference only)
+│   ├── app-data.json              # data the app reads (species, oncology topic, reference pages, source links, calc fields)
+│   └── conditions.json            # original flat data export (reference only, not read by the app)
 ├── README.md                      # knowledge-base index (this is a *different* README — see note below)
 ├── SETUP.md                       # this file
-├── 01-legal-regulatory.md
+├── 01-legal-regulatory.md         # Costa Rica (Ley 10113, SENASA, CPMVCR) first; US federal status as background
 ├── 02-canine.md
 ├── 03-feline.md
 ├── 04-equine.md
 ├── 05-livestock-food-animals.md
 ├── 06-toxicity-emergency.md
+├── 08-oncology.md                 # cancer/oncology — clearly separates the one real trial from preclinical findings
 └── 07-sources.md
 ```
 

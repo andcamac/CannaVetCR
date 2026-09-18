@@ -23,6 +23,8 @@
     --ochre-soft: #EFE6CD;
     --caution: #7A3B2E;
     --caution-soft: #F1DFD9;
+    --plum: #5B3D63;
+    --plum-soft: #E9E1EA;
     --focus: #2F5D4E;
     --radius: 4px;
     --shadow: 0 6px 20px rgba(28,36,32,0.10);
@@ -63,7 +65,7 @@
   .brand-text h1{ font-size: 19px; line-height:1.1; }
   .brand-text p{ margin:1px 0 0; color:var(--ink-soft); font-size:12px; }
 
-  .search-region{ position: relative; flex:1; max-width: 420px; margin-left: auto; }
+  .search-region{ position: relative; flex:1; max-width: 400px; margin-left: auto; }
   .search-input-wrap{
     display:flex; align-items:center; gap:8px;
     border:1px solid var(--line); border-radius: var(--radius);
@@ -82,10 +84,6 @@
     display:none;
   }
   .search-results.open{ display:block; }
-  .search-results .group-label{
-    font-size:11px; text-transform:uppercase; letter-spacing:.05em; color: var(--ink-faint);
-    padding: 10px 12px 4px;
-  }
   .search-results button{
     width:100%; text-align:left; background:none; border:none; cursor:pointer;
     padding: 8px 12px; font-size:14px; color: var(--ink); display:flex; justify-content:space-between; gap:8px;
@@ -95,6 +93,14 @@
     font-family:'IBM Plex Mono',monospace; font-size:11px; color: var(--ink-faint); flex-shrink:0;
   }
   .search-empty{ padding: 14px 12px; font-size:13.5px; color: var(--ink-faint); }
+
+  .calc-nav-btn{
+    display:flex; align-items:center; gap:7px;
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 8px 13px; font-size:13.5px; font-weight:500; color:var(--ink); cursor:pointer; flex-shrink:0;
+  }
+  .calc-nav-btn svg.icon{ color: var(--accent); }
+  .calc-nav-btn:hover{ border-color:var(--accent); }
 
   /* ---------- disclaimer ---------- */
   .disclaimer{
@@ -119,16 +125,17 @@
   }
   .home-link{
     display:flex; align-items:center; gap:8px; width:100%; background:none; border:none; cursor:pointer;
-    font-size:14.5px; font-weight:500; color:var(--ink); padding:7px 2px; margin-bottom:14px;
+    font-size:14.5px; font-weight:500; color:var(--ink); padding:7px 2px; margin-bottom:6px;
   }
   .home-link svg.icon{ color: var(--accent); }
-  .species-block{ margin-bottom:4px; }
-  .species-btn{
+  .group-block{ margin-bottom:4px; }
+  .group-btn{
     width:100%; display:flex; align-items:center; gap:9px; text-align:left; background:none; border:none;
     font:inherit; font-size:14.5px; font-weight:500; color:var(--ink); padding:7px 2px; cursor:pointer;
   }
-  .species-btn svg.icon{ color: var(--accent); flex-shrink:0; }
-  .species-btn .count{ margin-left:auto; font-size:11px; color:var(--ink-faint); font-family:'IBM Plex Mono',monospace; }
+  .group-btn svg.icon{ color: var(--accent); flex-shrink:0; }
+  .group-btn.plum svg.icon{ color: var(--plum); }
+  .group-btn .count{ margin-left:auto; font-size:11px; color:var(--ink-faint); font-family:'IBM Plex Mono',monospace; }
   .condition-list{ list-style:none; margin:2px 0 6px; padding:0 0 0 30px; }
   .condition-list li button{
     width:100%; text-align:left; background:none; border:none; border-left:2px solid transparent;
@@ -168,6 +175,7 @@
   .home-card p{ font-size:13px; color: var(--ink-soft); }
   .home-card .meta{ font-size:11.5px; color: var(--ink-faint); font-family:'IBM Plex Mono',monospace; margin-top:auto; }
   .home-card.ref-card svg.icon{ color: var(--caution); }
+  .home-card.topic-card svg.icon{ color: var(--plum); }
   .section-label{ font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); font-weight:600; margin: 30px 0 12px; }
 
   /* ---------- lookup detail ---------- */
@@ -185,21 +193,36 @@
     font-family:'IBM Plex Mono',monospace; font-weight:600; background: var(--accent-soft); color: var(--accent);
     border-radius: var(--radius); padding:1px 7px;
   }
-  .tier-badge[data-tier="D"] .letter, .tier-badge[data-tier="R"] .letter{ background: var(--ochre-soft); color: var(--ochre); }
+  .tier-badge[data-tier="D"] .letter{ background: var(--ochre-soft); color: var(--ochre); }
+  .tier-badge[data-tier="R"] .letter, .tier-badge[data-tier="P"] .letter{ background: var(--plum-soft); color: var(--plum); }
   .meter{ display:flex; gap:3px; }
   .meter .seg{ width:8px; height:8px; border-radius:2px; border:1px solid var(--line); background:transparent; }
   .meter .seg.filled{ background: var(--accent); border-color: var(--accent); }
-  .meter.reg .seg{ visibility:hidden; }
+
+  .invitro-flag{
+    display:flex; gap:9px; align-items:flex-start;
+    background: var(--plum-soft); border-left:3px solid var(--plum); color:#3A2740;
+    padding:10px 13px; border-radius: var(--radius); font-size:13.5px; margin-bottom:20px;
+  }
+  .invitro-flag svg.icon{ margin-top:2px; flex-shrink:0; color: var(--plum); }
 
   .dose-hero{ display:flex; align-items:baseline; gap:14px; margin:4px 0 24px; flex-wrap:wrap; }
   .dose-figure{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:31px; color:var(--accent); line-height:1.15; }
   .dose-figure.caution{ color:var(--caution); font-size:19px; }
+  .dose-figure.plum{ color:var(--plum); font-size:19px; }
   .dose-note{ font-size:13.5px; color:var(--ink-soft); }
 
   section.block{ margin-bottom:22px; }
   section.block h3{ font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:600; margin-bottom:6px; }
   section.block p{ font-size:15px; }
-  .source-line{ font-size:13.5px; color:var(--ink-soft); font-style:italic; }
+  .source-line{ font-size:13.5px; color:var(--ink-soft); font-style:italic; margin-bottom:6px; }
+  .source-link{
+    display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:500;
+    color: var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft); padding-bottom:1px;
+  }
+  .source-link:hover{ border-bottom-color: var(--accent); }
+  .source-link svg.icon{ width:.85em; height:.85em; }
+  .no-source{ font-size:13px; color: var(--ink-faint); font-style:italic; }
 
   .related-row{ margin-top: 30px; padding-top:18px; border-top:1px solid var(--line); }
   .related-row h3{ font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); font-weight:600; margin-bottom:10px; }
@@ -221,6 +244,41 @@
   .ref-section{ margin-bottom:22px; }
   .ref-section h3{ font-size:15.5px; font-family:'Fraunces',serif; font-weight:600; margin-bottom:6px; }
   .ref-section p{ font-size:15px; }
+  .ref-section .link-list{ list-style:none; margin:10px 0 0; padding:0; display:flex; flex-direction:column; gap:5px; }
+  .ref-section .link-list a{ font-size:13.5px; }
+  .verification-note{
+    margin-top:32px; padding:14px 16px; background: var(--panel); border:1px solid var(--line);
+    border-radius: var(--radius); font-size:13px; color: var(--ink-soft);
+  }
+
+  /* ---------- calculator ---------- */
+  .calc-form{ display:grid; gap:18px; max-width: 480px; margin-bottom: 26px; }
+  .calc-field label{ display:block; font-size:12.5px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); margin-bottom:6px; }
+  .calc-field select, .calc-field input{
+    width:100%; font:inherit; font-size:14.5px; padding:9px 10px; border:1px solid var(--line);
+    border-radius: var(--radius); background: var(--panel); color: var(--ink);
+  }
+  .weight-row{ display:flex; gap:8px; }
+  .weight-row input{ flex:1; }
+  .unit-toggle{ display:flex; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; }
+  .unit-toggle button{
+    background: var(--panel); border:none; padding:0 14px; font-size:13.5px; color: var(--ink-soft); cursor:pointer;
+  }
+  .unit-toggle button[aria-pressed="true"]{ background: var(--accent); color:#fff; font-weight:500; }
+  .calc-result{
+    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 20px 22px; max-width: 480px;
+  }
+  .calc-result .result-figure{ font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:26px; color: var(--accent); margin-bottom:4px; }
+  .calc-result .result-sub{ font-size:13px; color: var(--ink-soft); margin-bottom:14px; }
+  .calc-result .result-row{ display:flex; justify-content:space-between; font-size:14px; padding:6px 0; border-top:1px solid var(--line); }
+  .calc-result .result-row:first-of-type{ border-top:none; }
+  .calc-warning{
+    display:flex; gap:9px; align-items:flex-start; background: var(--caution-soft); color:#4A2118;
+    border-left:3px solid var(--caution); padding:12px 14px; border-radius: var(--radius); font-size:13.5px; margin-top:14px;
+  }
+  .calc-warning svg.icon{ margin-top:2px; flex-shrink:0; }
+  .calc-empty{ color: var(--ink-faint); font-size:14px; }
 
   .empty-state{ color: var(--ink-soft); font-size:14.5px; }
 
@@ -241,6 +299,7 @@
       display:block; position:fixed; inset:0; background: rgba(20,24,20,0.35); z-index:35;
     }
     .search-region{ max-width: none; }
+    .calc-nav-btn span.label{ display:none; }
   }
 
   @media print{
@@ -266,10 +325,14 @@
   <div class="search-region">
     <div class="search-input-wrap">
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="search" id="search" placeholder="Search species or condition…" autocomplete="off" aria-label="Search species or condition">
+      <input type="search" id="search" placeholder="Search species, condition, or topic…" autocomplete="off" aria-label="Search species, condition, or topic">
     </div>
     <div class="search-results" id="searchResults"></div>
   </div>
+  <button class="calc-nav-btn" id="calcNavBtn" type="button">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M8 11h1M12 11h1M16 11h1M8 15h1M12 15h1M16 15h1"/></svg>
+    <span class="label">Dose calculator</span>
+  </button>
 </header>
 
 <div class="disclaimer" id="disclaimer">
@@ -285,7 +348,12 @@
       <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg>
       Home
     </button>
+    <button class="home-link" id="calcLinkSidebar" type="button" style="margin-bottom:14px;">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M8 11h1M12 11h1M16 11h1M8 15h1M12 15h1M16 15h1"/></svg>
+      Dose calculator
+    </button>
     <div id="species-nav"></div>
+    <div id="topics-nav"></div>
     <div class="nav-group" id="reference-nav">
       <h3>Reference</h3>
     </div>
@@ -297,23 +365,27 @@
 </div>
 
 <footer class="app-footer">
-  Sources compiled from public veterinary literature and regulatory guidance, September 2026. Not a substitute for veterinary judgment. See the full knowledge base (<code>01–07 .md</code> files) in this repository for citations.
+  Sources compiled from public veterinary literature and regulatory guidance, September 2026. Not a substitute for veterinary judgment. Every entry links to its source — click through and confirm before relying on a figure clinically.
 </footer>
 
 <script>
 (function(){
   var DATA = null;
   var SEARCH_INDEX = [];
-  var state = { view: 'home', speciesId: null, conditionId: null, refId: null };
+  var state = { view: 'home', groupId: null, conditionId: null, refId: null };
   var activeSearchIndex = -1;
+  var calcUnit = 'kg';
 
   var ICONS = {
     canine: '<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="9" r="2"/><circle cx="10.5" cy="5.5" r="2"/><circle cx="15.5" cy="5.5" r="2"/><circle cx="20" cy="9" r="2"/><path d="M13 10c-4 0-7.5 2.7-8 6.2-.4 2 1.3 3.8 3.4 3.4 1-.2 2.1-.7 3.1-1.2.9-.5 1.9-.5 2.8 0 1 .5 2.1 1 3.1 1.2 2.1.4 3.8-1.4 3.4-3.4-.5-3.5-4-6.2-7.8-6.2Z"/></svg>',
     feline: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 4 8 9h8l2-5-4.5 2.5h-3Z"/><path d="M8 9c-2.5 1-4 3.4-4 6.2C4 18.9 7.6 21 12 21s8-2.1 8-5.8c0-2.8-1.5-5.2-4-6.2"/><circle cx="9.7" cy="14.5" r=".6" fill="currentColor" stroke="none"/><circle cx="14.3" cy="14.5" r=".6" fill="currentColor" stroke="none"/></svg>',
     equine: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20c0-4.5 1-8 3-10.5C10 6.8 12 5 14.5 5c1.8 0 2.5 1.3 2 2.7-.4 1.1-1.4 1.6-2.5 1.8"/><path d="M14.8 9.3 19 8"/><circle cx="15.7" cy="7.4" r=".55" fill="currentColor" stroke="none"/><path d="M8.5 12.5c1.5.8 3 .8 4.5 0"/><path d="M9 20l.6-4M15 20l-.4-4.5"/></svg>',
     livestock: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V9"/><path d="M12 9c0-2.5-1.5-4-3-5"/><path d="M12 9c0-2.5 1.5-4 3-5"/><path d="M12 13c-1.8 0-3-1.2-3-3"/><path d="M12 13c1.8 0 3-1.2 3-3"/><path d="M12 17c-1.8 0-3-1.2-3-3"/><path d="M12 17c1.8 0 3-1.2 3-3"/></svg>',
+    oncology: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3M6.3 6.3l2 2M15.7 15.7l2 2M17.7 6.3l-2 2M8.3 15.7l-2 2"/></svg>',
     legal: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h4l-2 5a2.2 2.2 0 0 1-4 0Z"/><path d="M15 7h4l-2 5a2.2 2.2 0 0 1-4 0Z"/><path d="M5 7 12 5l7 2"/><path d="M8 21h8"/></svg>',
-    toxicity: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.86 1.8 18a1 1 0 0 0 .86 1.5h18.7a1 1 0 0 0 .86-1.5L13.7 3.86a1 1 0 0 0-1.72 0Z"/></svg>'
+    toxicity: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.86 1.8 18a1 1 0 0 0 .86 1.5h18.7a1 1 0 0 0 .86-1.5L13.7 3.86a1 1 0 0 0-1.72 0Z"/></svg>',
+    calc: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M8 11h1M12 11h1M16 11h1M8 15h1M12 15h1M16 15h1"/></svg>',
+    external: '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/></svg>'
   };
   function iconFor(id){ return ICONS[id] || ''; }
 
@@ -329,44 +401,50 @@
     return e;
   }
 
-  function findSpecies(id){ return DATA.species.find(function(s){ return s.id === id; }); }
-  function findCondition(speciesId, condId){
-    var sp = findSpecies(speciesId);
-    if(!sp) return null;
-    return sp.conditions.find(function(c){ return c.id === condId; });
+  function allGroups(){ return (DATA.species || []).concat(DATA.topics || []); }
+  function findGroup(id){ return allGroups().find(function(g){ return g.id === id; }); }
+  function findCondition(groupId, condId){
+    var g = findGroup(groupId);
+    if(!g) return null;
+    return g.conditions.find(function(c){ return c.id === condId; });
   }
   function refPage(id){ return DATA.referencePages.find(function(r){ return r.id === id; }); }
 
-  var TIER_RANK = { A:4, B:3, C:2, D:1, R:0 };
+  var TIER_RANK = { A:4, B:3, C:2, D:1, P:0, R:0 };
 
   /* ---------------- sidebar ---------------- */
-  function renderSidebar(){
-    var speciesNav = document.getElementById('species-nav');
-    speciesNav.innerHTML = '';
-    var group = el('div', {class:'nav-group'}, [el('h3', {text:'Species'})]);
-    DATA.species.forEach(function(sp){
-      var block = el('div', {class:'species-block'});
-      var btn = el('button', {class:'species-btn', type:'button', html: iconFor(sp.id)});
-      btn.appendChild(el('span', {text: sp.label}));
-      btn.appendChild(el('span', {class:'count', text: sp.conditions.length}));
+  function renderNavGroup(container, title, items, kind){
+    container.innerHTML = '';
+    var group = el('div', {class:'nav-group'}, [el('h3', {text: title})]);
+    items.forEach(function(g){
+      var block = el('div', {class:'group-block'});
+      var btn = el('button', {class:'group-btn' + (kind === 'topic' ? ' plum' : ''), type:'button', html: iconFor(g.id)});
+      btn.appendChild(el('span', {text: g.label}));
+      btn.appendChild(el('span', {class:'count', text: g.conditions.length}));
       btn.addEventListener('click', function(){
-        navigate('lookup', sp.id, sp.conditions[0] ? sp.conditions[0].id : null);
+        navigate('lookup', g.id, g.conditions[0] ? g.conditions[0].id : null);
       });
       block.appendChild(btn);
 
       var list = el('ul', {class:'condition-list'});
-      sp.conditions.forEach(function(c){
+      g.conditions.forEach(function(c){
         var li = el('li');
-        var cbtn = el('button', {type:'button', text: c.condition, 'data-cond': c.id, 'data-sp': sp.id});
-        cbtn.addEventListener('click', function(){ navigate('lookup', sp.id, c.id); });
+        var cbtn = el('button', {type:'button', text: c.condition, 'data-cond': c.id, 'data-grp': g.id});
+        cbtn.addEventListener('click', function(){ navigate('lookup', g.id, c.id); });
         li.appendChild(cbtn);
         list.appendChild(li);
       });
       block.appendChild(list);
       group.appendChild(block);
     });
-    speciesNav.appendChild(group);
+    container.appendChild(group);
+  }
 
+  function renderSidebar(){
+    renderNavGroup(document.getElementById('species-nav'), 'Species', DATA.species, 'species');
+    if(DATA.topics && DATA.topics.length){
+      renderNavGroup(document.getElementById('topics-nav'), 'Topics', DATA.topics, 'topic');
+    }
     var refNav = document.getElementById('reference-nav');
     refNav.innerHTML = '<h3>Reference</h3>';
     DATA.referencePages.forEach(function(rp){
@@ -382,7 +460,7 @@
     document.querySelectorAll('.ref-btn').forEach(function(b){ b.removeAttribute('aria-current'); });
     if(state.view === 'lookup' && state.conditionId){
       document.querySelectorAll('.condition-list li button').forEach(function(b){
-        if(b.getAttribute('data-cond') === state.conditionId && b.getAttribute('data-sp') === state.speciesId){
+        if(b.getAttribute('data-cond') === state.conditionId && b.getAttribute('data-grp') === state.groupId){
           b.setAttribute('aria-current', 'true');
         }
       });
@@ -395,9 +473,9 @@
   }
 
   /* ---------------- navigation ---------------- */
-  function navigate(view, speciesId, conditionId, refId){
+  function navigate(view, groupId, conditionId, refId){
     state.view = view;
-    state.speciesId = speciesId || null;
+    state.groupId = groupId || null;
     state.conditionId = conditionId || null;
     state.refId = refId || null;
     closeDrawer();
@@ -423,12 +501,30 @@
 
   /* ---------------- main render ---------------- */
   function renderMeter(tier){
-    var wrap = el('div', {class:'meter' + (tier === 'R' ? ' reg' : '')});
+    var wrap = el('div', {class:'meter'});
     var rank = TIER_RANK[tier] || 0;
+    if(tier === 'R' || tier === 'P'){
+      wrap.appendChild(el('span', {text: tier === 'R' ? 'Regulatory, not clinical' : 'Preclinical only', style:'font-size:12px;color:var(--plum);font-weight:500;'}));
+      return wrap;
+    }
     for(var i=1;i<=4;i++){
       wrap.appendChild(el('div', {class:'seg' + (i<=rank ? ' filled' : '')}));
     }
     return wrap;
+  }
+
+  function sourceBlock(c){
+    var src = el('section', {class:'block'});
+    src.appendChild(el('h3', {text:'Source'}));
+    src.appendChild(el('p', {class:'source-line', text: c.source}));
+    if(c.sourceUrl){
+      var a = el('a', {class:'source-link', href: c.sourceUrl, target:'_blank', rel:'noopener noreferrer', html: iconFor('external')});
+      a.appendChild(document.createTextNode('View source'));
+      src.appendChild(a);
+    } else {
+      src.appendChild(el('span', {class:'no-source', text:'No single canonical link for this aggregated entry — see 07-sources.md in the repo.'}));
+    }
+    return src;
   }
 
   function renderHome(){
@@ -436,7 +532,7 @@
     main.innerHTML = '';
     var hero = el('div', {class:'home-hero'});
     hero.appendChild(el('h2', {text:'Species & condition dose reference'}));
-    hero.appendChild(el('p', {text:'Pick a species to see what the published veterinary literature actually reports \u2014 studied dose ranges, evidence strength, and the source behind each figure. Built for a quick check during a client conversation, not as a substitute for clinical judgment.'}));
+    hero.appendChild(el('p', {text:'Pick a species to see what the published veterinary literature actually reports \u2014 studied dose ranges, evidence strength, and a direct link to the source. Built for a quick check during a client conversation, not as a substitute for clinical judgment.'}));
     main.appendChild(hero);
 
     main.appendChild(el('div', {class:'section-label', text:'Look up a species'}));
@@ -451,8 +547,27 @@
     });
     main.appendChild(grid);
 
-    main.appendChild(el('div', {class:'section-label', text:'Reference'}));
+    if(DATA.topics && DATA.topics.length){
+      main.appendChild(el('div', {class:'section-label', text:'Browse by topic'}));
+      var topicGrid = el('div', {class:'card-grid'});
+      DATA.topics.forEach(function(tp){
+        var card = el('button', {class:'home-card topic-card', type:'button', html: iconFor(tp.id)});
+        card.appendChild(el('h3', {text: tp.label}));
+        card.appendChild(el('p', {text: tp.commonName}));
+        card.appendChild(el('div', {class:'meta', text: tp.conditions.length + ' entries \u2014 mostly preclinical'}));
+        card.addEventListener('click', function(){ navigate('lookup', tp.id, tp.conditions[0].id); });
+        topicGrid.appendChild(card);
+      });
+      main.appendChild(topicGrid);
+    }
+
+    main.appendChild(el('div', {class:'section-label', text:'Tools & reference'}));
     var refGrid = el('div', {class:'card-grid'});
+    var calcCard = el('button', {class:'home-card', type:'button', html: iconFor('calc')});
+    calcCard.appendChild(el('h3', {text:'Dose calculator'}));
+    calcCard.appendChild(el('p', {text:'Enter a patient weight to convert a studied mg/kg dose into a total dose.'}));
+    calcCard.addEventListener('click', function(){ navigate('calculator'); });
+    refGrid.appendChild(calcCard);
     DATA.referencePages.forEach(function(rp){
       var card = el('button', {class:'home-card ref-card', type:'button', html: iconFor(rp.id)});
       card.appendChild(el('h3', {text: rp.label}));
@@ -479,6 +594,16 @@
       var sec = el('div', {class:'ref-section'});
       sec.appendChild(el('h3', {text: s.heading}));
       sec.appendChild(el('p', {text: s.body}));
+      if(s.links && s.links.length){
+        var ul = el('ul', {class:'link-list'});
+        s.links.forEach(function(l){
+          var li = el('li');
+          var a = el('a', {href: l.url, target:'_blank', rel:'noopener noreferrer', text: l.label});
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+        sec.appendChild(ul);
+      }
       wrap.appendChild(sec);
     });
     main.appendChild(wrap);
@@ -487,22 +612,30 @@
   function renderLookup(){
     var main = document.getElementById('main');
     main.innerHTML = '';
-    var sp = findSpecies(state.speciesId);
-    var c = findCondition(state.speciesId, state.conditionId);
-    if(!sp || !c){ main.appendChild(el('p', {class:'empty-state', text:'Condition not found.'})); return; }
+    var g = findGroup(state.groupId);
+    var c = findCondition(state.groupId, state.conditionId);
+    if(!g || !c){ main.appendChild(el('p', {class:'empty-state', text:'Condition not found.'})); return; }
+    var isTopic = (DATA.topics || []).some(function(t){ return t.id === g.id; });
 
     main.appendChild(breadcrumb([
       {label:'Home', action: function(){ navigate('home'); }},
-      {label: sp.label, action: function(){ navigate('lookup', sp.id, sp.conditions[0].id); }},
+      {label: g.label, action: function(){ navigate('lookup', g.id, g.conditions[0].id); }},
       {label: c.condition}
     ]));
 
     var head = el('div', {class:'detail-head'});
-    var kicker = el('p', {class:'kicker', html: iconFor(sp.id)});
-    kicker.appendChild(document.createTextNode(sp.label + ' \u00B7 ' + sp.commonName));
+    var kicker = el('p', {class:'kicker', html: iconFor(g.id)});
+    kicker.appendChild(document.createTextNode(g.label + ' \u00B7 ' + g.commonName));
     head.appendChild(kicker);
     head.appendChild(el('h2', {text: c.condition}));
     main.appendChild(head);
+
+    if(c.inVitroOnly){
+      var flag = el('div', {class:'invitro-flag'});
+      flag.innerHTML = ICONS.toxicity;
+      flag.appendChild(el('span', {text:'Preclinical (cell-culture or rodent-model) evidence only. This has not been tested as a treatment in live veterinary patients and the concentrations used cannot be converted into an oral dose.'}));
+      main.appendChild(flag);
+    }
 
     var tierRow = el('div', {class:'tier-row'});
     var badge = el('div', {class:'tier-badge'});
@@ -515,7 +648,9 @@
 
     var hero = el('div', {class:'dose-hero'});
     var isCaution = /not approved|no dose|no.*rct|no confirmed|not a dosing/i.test(c.dose);
-    hero.appendChild(el('div', {class:'dose-figure' + (isCaution ? ' caution' : ''), text: c.dose}));
+    var isPlum = c.inVitroOnly || /preclinical only|not applicable/i.test(c.dose);
+    var doseClass = isPlum ? ' plum' : (isCaution ? ' caution' : '');
+    hero.appendChild(el('div', {class:'dose-figure' + doseClass, text: c.dose}));
     if(c.doseNote){ hero.appendChild(el('div', {class:'dose-note', text: c.doseNote})); }
     main.appendChild(hero);
 
@@ -524,23 +659,30 @@
     notes.appendChild(el('p', {text: c.notes}));
     main.appendChild(notes);
 
-    var src = el('section', {class:'block'});
-    src.appendChild(el('h3', {text:'Source'}));
-    src.appendChild(el('p', {class:'source-line', text: c.source}));
-    main.appendChild(src);
+    main.appendChild(sourceBlock(c));
 
-    var others = sp.conditions.filter(function(x){ return x.id !== c.id; });
+    var others = g.conditions.filter(function(x){ return x.id !== c.id; });
     if(others.length){
       var rel = el('div', {class:'related-row'});
-      rel.appendChild(el('h3', {text:'Other ' + sp.label.toLowerCase() + ' conditions'}));
+      rel.appendChild(el('h3', {text:'Other ' + g.label.toLowerCase() + ' entries'}));
       var chips = el('div', {class:'chip-row'});
       others.forEach(function(o){
         var chip = el('button', {class:'chip', type:'button', text: o.condition});
-        chip.addEventListener('click', function(){ navigate('lookup', sp.id, o.id); });
+        chip.addEventListener('click', function(){ navigate('lookup', g.id, o.id); });
         chips.appendChild(chip);
       });
       rel.appendChild(chips);
       main.appendChild(rel);
+    }
+
+    if(!isTopic && c.calc){
+      var calcCta = el('div', {class:'related-row'});
+      calcCta.appendChild(el('h3', {text:'Calculate a dose for a specific patient'}));
+      var goCalc = el('button', {class:'chip', type:'button', html: iconFor('calc')});
+      goCalc.appendChild(document.createTextNode(' Open dose calculator'));
+      goCalc.addEventListener('click', function(){ navigate('calculator', g.id, c.id); });
+      calcCta.appendChild(goCalc);
+      main.appendChild(calcCta);
     }
 
     var legend = el('div', {class:'tier-legend'});
@@ -554,9 +696,144 @@
     main.appendChild(legend);
   }
 
+  /* ---------------- calculator ---------------- */
+  function renderCalculator(){
+    var main = document.getElementById('main');
+    main.innerHTML = '';
+    main.appendChild(breadcrumb([
+      {label:'Home', action: function(){ navigate('home'); }},
+      {label:'Dose calculator'}
+    ]));
+    var head = el('div', {class:'detail-head'});
+    head.appendChild(el('h2', {text:'Dose calculator'}));
+    main.appendChild(head);
+
+    var intro = el('p', {style:'margin-bottom:22px;font-size:14.5px;color:var(--ink-soft);max-width:520px;'});
+    intro.textContent = 'Pick a species and a condition with a numeric studied dose, enter the patient\u2019s weight, and this converts the published mg/kg figure into a total dose. It cannot do this for preclinical (in vitro) entries, add-on/no-fixed-dose entries, or the Livestock and Legal/Regulatory pages \u2014 those need a different kind of answer, not a bigger calculator.';
+    main.appendChild(intro);
+
+    var form = el('div', {class:'calc-form'});
+
+    var speciesField = el('div', {class:'calc-field'});
+    speciesField.appendChild(el('label', {text:'Species', for:'calcSpecies'}));
+    var speciesSelect = el('select', {id:'calcSpecies'});
+    DATA.species.forEach(function(sp){
+      speciesSelect.appendChild(el('option', {value: sp.id, text: sp.label}));
+    });
+    speciesField.appendChild(speciesSelect);
+    form.appendChild(speciesField);
+
+    var condField = el('div', {class:'calc-field'});
+    condField.appendChild(el('label', {text:'Condition', for:'calcCondition'}));
+    var condSelect = el('select', {id:'calcCondition'});
+    condField.appendChild(condSelect);
+    form.appendChild(condField);
+
+    var weightField = el('div', {class:'calc-field'});
+    weightField.appendChild(el('label', {text:'Patient weight'}));
+    var weightRow = el('div', {class:'weight-row'});
+    var weightInput = el('input', {type:'number', min:'0', step:'0.1', id:'calcWeight', placeholder:'e.g. 18'});
+    var unitToggle = el('div', {class:'unit-toggle'});
+    var kgBtn = el('button', {type:'button', text:'kg', 'aria-pressed': calcUnit === 'kg' ? 'true' : 'false'});
+    var lbBtn = el('button', {type:'button', text:'lb', 'aria-pressed': calcUnit === 'lb' ? 'true' : 'false'});
+    kgBtn.addEventListener('click', function(){ calcUnit = 'kg'; kgBtn.setAttribute('aria-pressed','true'); lbBtn.setAttribute('aria-pressed','false'); updateCalcResult(); });
+    lbBtn.addEventListener('click', function(){ calcUnit = 'lb'; lbBtn.setAttribute('aria-pressed','true'); kgBtn.setAttribute('aria-pressed','false'); updateCalcResult(); });
+    unitToggle.appendChild(kgBtn); unitToggle.appendChild(lbBtn);
+    weightRow.appendChild(weightInput); weightRow.appendChild(unitToggle);
+    weightField.appendChild(weightRow);
+    form.appendChild(weightField);
+
+    main.appendChild(form);
+
+    var resultBox = el('div', {id:'calcResultBox'});
+    main.appendChild(resultBox);
+
+    function populateConditions(){
+      condSelect.innerHTML = '';
+      var g = findGroup(speciesSelect.value);
+      g.conditions.forEach(function(c){
+        condSelect.appendChild(el('option', {value: c.id, text: c.condition}));
+      });
+    }
+    populateConditions();
+    if(state.groupId && state.conditionId && DATA.species.some(function(s){return s.id === state.groupId;})){
+      speciesSelect.value = state.groupId;
+      populateConditions();
+      condSelect.value = state.conditionId;
+    }
+
+    speciesSelect.addEventListener('change', function(){ populateConditions(); updateCalcResult(); });
+    condSelect.addEventListener('change', updateCalcResult);
+    weightInput.addEventListener('input', updateCalcResult);
+
+    function updateCalcResult(){
+      var box = document.getElementById('calcResultBox');
+      box.innerHTML = '';
+      var c = findCondition(speciesSelect.value, condSelect.value);
+      if(!c){ return; }
+
+      if(!c.calc){
+        var msg = el('div', {class:'calc-result'});
+        msg.appendChild(el('div', {class:'calc-empty', text: 'No numeric per-kg dose to calculate for this entry.'}));
+        msg.appendChild(el('p', {style:'margin-top:8px;font-size:13.5px;color:var(--ink-soft);', text: c.doseNote || c.dose}));
+        box.appendChild(msg);
+        return;
+      }
+
+      var weightRaw = parseFloat(weightInput.value);
+      var result = el('div', {class:'calc-result'});
+      if(!weightRaw || weightRaw <= 0){
+        result.appendChild(el('div', {class:'calc-empty', text:'Enter a patient weight to calculate.'}));
+        box.appendChild(result);
+        return;
+      }
+      var weightKg = calcUnit === 'lb' ? weightRaw * 0.453592 : weightRaw;
+      var low = c.calc.doseMgKgLow, high = c.calc.doseMgKgHigh, freq = c.calc.freqPerDay || 1;
+      var perDoseLow = low * weightKg, perDoseHigh = high * weightKg;
+      var dailyLow = perDoseLow * freq, dailyHigh = perDoseHigh * freq;
+
+      function fmtRange(a,b){
+        a = Math.round(a*10)/10; b = Math.round(b*10)/10;
+        return a === b ? (a + ' mg') : (a + '\u2013' + b + ' mg');
+      }
+
+      result.appendChild(el('div', {class:'result-figure', text: fmtRange(perDoseLow, perDoseHigh) + ' per dose'}));
+      result.appendChild(el('div', {class:'result-sub', text: weightKg.toFixed(1) + ' kg patient \u00d7 ' + low + (high!==low?('\u2013'+high):'') + ' mg/kg, ' + freq + '\u00d7/day'}));
+
+      var row1 = el('div', {class:'result-row'});
+      row1.appendChild(el('span', {text:'Per administration'}));
+      row1.appendChild(el('span', {text: fmtRange(perDoseLow, perDoseHigh)}));
+      result.appendChild(row1);
+
+      var row2 = el('div', {class:'result-row'});
+      row2.appendChild(el('span', {text:'Total per day (' + freq + '\u00d7)'}));
+      row2.appendChild(el('span', {text: fmtRange(dailyLow, dailyHigh)}));
+      result.appendChild(row2);
+
+      if(c.calc.calcNote){
+        var note = el('div', {class:'result-row'});
+        note.style.borderTop = '1px solid var(--line)';
+        note.appendChild(el('span', {text: c.calc.calcNote, style:'font-size:12.5px;color:var(--ink-soft);'}));
+        result.appendChild(note);
+      }
+
+      var warn = el('div', {class:'calc-warning'});
+      warn.innerHTML = ICONS.toxicity;
+      var warnText = 'Reference-only, calculated from a published study\u2019s mg/kg figure \u2014 not a prescription. Confirm with the treating veterinarian and the specific product\u2019s labeled concentration before administering anything.';
+      if(c.tier === 'C'){ warnText += ' This entry is a safety/tolerance dose, not a dose shown effective for a specific condition.'; }
+      if(c.tier === 'D'){ warnText += ' This entry is consumer-guidance tier, not sourced to a controlled trial.'; }
+      warn.appendChild(el('span', {text: warnText}));
+      result.appendChild(warn);
+
+      box.appendChild(result);
+    }
+    updateCalcResult();
+  }
+
   function render(){
     if(state.view === 'home') renderHome();
     else if(state.view === 'reference') renderReference();
+    else if(state.view === 'calculator') renderCalculator();
     else renderLookup();
     highlightSidebar();
   }
@@ -564,14 +841,15 @@
   /* ---------------- search ---------------- */
   function buildSearchIndex(){
     SEARCH_INDEX = [];
-    DATA.species.forEach(function(sp){
-      sp.conditions.forEach(function(c){
-        SEARCH_INDEX.push({ type:'condition', speciesId: sp.id, speciesLabel: sp.label, conditionId: c.id, label: c.condition, tier: c.tier });
+    allGroups().forEach(function(g){
+      g.conditions.forEach(function(c){
+        SEARCH_INDEX.push({ type:'condition', groupId: g.id, groupLabel: g.label, conditionId: c.id, label: c.condition, tier: c.tier });
       });
     });
     DATA.referencePages.forEach(function(rp){
       SEARCH_INDEX.push({ type:'reference', refId: rp.id, label: rp.label });
     });
+    SEARCH_INDEX.push({ type:'calculator', label:'Dose calculator' });
   }
 
   function openSearch(){ document.getElementById('searchResults').classList.add('open'); }
@@ -587,7 +865,7 @@
 
     var results = SEARCH_INDEX.filter(function(item){
       return item.label.toLowerCase().indexOf(query) !== -1 ||
-        (item.speciesLabel && item.speciesLabel.toLowerCase().indexOf(query) !== -1);
+        (item.groupLabel && item.groupLabel.toLowerCase().indexOf(query) !== -1);
     }).slice(0, 10);
 
     box.innerHTML = '';
@@ -600,18 +878,25 @@
     results.forEach(function(r){
       var btn = el('button', {type:'button'});
       if(r.type === 'condition'){
-        btn.appendChild(el('span', {text: r.speciesLabel + ' \u2014 ' + r.label}));
+        btn.appendChild(el('span', {text: r.groupLabel + ' \u2014 ' + r.label}));
         btn.appendChild(el('span', {class:'tier-chip', text: 'Tier ' + r.tier}));
         btn.addEventListener('click', function(){
           document.getElementById('search').value = '';
-          navigate('lookup', r.speciesId, r.conditionId);
+          navigate('lookup', r.groupId, r.conditionId);
         });
-      } else {
+      } else if(r.type === 'reference'){
         btn.appendChild(el('span', {text: r.label}));
         btn.appendChild(el('span', {class:'tier-chip', text: 'Reference'}));
         btn.addEventListener('click', function(){
           document.getElementById('search').value = '';
           navigate('reference', null, null, r.refId);
+        });
+      } else {
+        btn.appendChild(el('span', {text: r.label}));
+        btn.appendChild(el('span', {class:'tier-chip', text: 'Tool'}));
+        btn.addEventListener('click', function(){
+          document.getElementById('search').value = '';
+          navigate('calculator');
         });
       }
       box.appendChild(btn);
@@ -671,6 +956,8 @@
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); navigate('home'); }
     });
     document.getElementById('homeLinkSidebar').addEventListener('click', function(){ navigate('home'); });
+    document.getElementById('calcLinkSidebar').addEventListener('click', function(){ navigate('calculator'); });
+    document.getElementById('calcNavBtn').addEventListener('click', function(){ navigate('calculator'); });
   }
 
   fetch('data/app-data.json')

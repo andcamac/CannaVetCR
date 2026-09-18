@@ -32,6 +32,7 @@
 
 ## Toxicity / Emergency
 
+- Binagia, E.M., Gregory, E.A., Yankin, I. (2024). Clinical examination findings and electrolyte abnormalities of dogs with marijuana/tetrahydrocannabinol toxicity: 223 cases (January 2017–July 2021). *J Am Vet Med Assoc* 262(8):1047-1054. https://pubmed.ncbi.nlm.nih.gov/38608656/
 - UC Davis School of Veterinary Medicine — Marijuana Toxicosis (Animal Health Topics).
 - Cummings School of Veterinary Medicine, Tufts University — Marijuana Toxicosis in Pets.
 - Merck Veterinary Manual — Toxicosis in Dogs and Cats From Tetrahydrocannabinol (THC), full review Feb 2026.
@@ -40,8 +41,33 @@
 - Brutlag, A., Hommerding, H. (2018). Toxicology of marijuana, synthetic cannabinoids, and cannabidiol in dogs and cats. *Vet Clin Small Anim Pract* 48:1087-1102.
 - MedVet, AKC, PetMD, UrgentVet — client-facing marijuana toxicity summaries (lower evidence tier, cross-checked against Merck Vet Manual for consistency).
 
+## Cancer / Oncology
+
+- Lejeune, A., Bechtel, S., Milner, R., Fagman, L., Leal Yepes, F.A., Wakshlag, J.J. (2025). Safety, Efficacy and Doxorubicin Pharmacokinetics During Cannabidiol/Cannabidiolic Acid Rich Hemp Oil Use in Dogs With Lymphoma Undergoing CHOP Chemotherapy. *J Vet Intern Med* 39(4):e70179. https://doi.org/10.1111/jvim.70179
+- della Rocca, G., Di Salvo, A., Salucci, E., Amadori, M., Re, G., Vercelli, C. (2025). The Role of the Endocannabinoid System in Oncology and the Potential Use of Cannabis Derivatives for Cancer Management in Companion Animals. *Animals* 15(15):2185. https://doi.org/10.3390/ani15152185
+- Potential antitumor effect of cannabidiol (CBD) in canine oncology: a systematic review (2026). *Frontiers in Veterinary Science*. PMID 42254894. https://pubmed.ncbi.nlm.nih.gov/42254894/
+- Effects of Cannabidiol, Δ9-THC, and WIN 55,212-2 on canine and human non-Hodgkin lymphoma cell lines. PMID 38672512. https://pubmed.ncbi.nlm.nih.gov/38672512/
+- Validating anti-lymphoma pharmacodynamic actions of endocannabinoids on canine non-Hodgkin lymphoma. PMID 37330042. https://pubmed.ncbi.nlm.nih.gov/37330042/
+- Modulation of the endocannabinoid system reduces inflammatory signalling in canine mammary carcinoma cells. PMID 42078490. https://pubmed.ncbi.nlm.nih.gov/42078490/
+- Formulation and Functional Characterization of a Cannabidiol-Loaded Nanoemulsion in Canine Mammary Carcinoma Cells. PMID 40870993 / PMC12389271. https://pubmed.ncbi.nlm.nih.gov/40870993/
+- In Vitro Antitumor Effect of Oils Rich in CBD and THC Cannabis Extract in Canine Prostate Carcinoma Cell Lines. PMID 39453093 / PMC11512242. https://pubmed.ncbi.nlm.nih.gov/39453093/
+- Combination therapy with cannabidiol and chemotherapeutics in canine urothelial carcinoma cells. PMID 34352013 / PMC8341525. https://pubmed.ncbi.nlm.nih.gov/34352013/
+- The effect of cannabidiol on canine neoplastic cell proliferation and MAPK activation during autophagy and apoptosis. PMID 33247539. https://pubmed.ncbi.nlm.nih.gov/33247539/
+- Gross, C., Ramirez, D.A., McGrath, S., Gustafson, D.L. (2021). Cannabidiol Induces Apoptosis and Perturbs Mitochondrial Function in Human and Canine Glioma Cells. *Front Pharmacol* 12:725136. https://doi.org/10.3389/fphar.2021.725136
+- CBD + radiation therapy on canine glioma cell line transplanted in immunodeficient mice. PMC12390246. https://pmc.ncbi.nlm.nih.gov/articles/PMC12390246/
+- Immunoreactivity of p21, MMP-1 and CB2 receptor proteins in cutaneous canine mast cell tumours. PMID 38130452. https://pubmed.ncbi.nlm.nih.gov/38130452/
+- Circulating Endocannabinoids in Canine Cutaneous Mast Cell Tumor. PMID 39457916 / PMC11503820. https://pubmed.ncbi.nlm.nih.gov/39457916/
+- Sedative and anesthetic-sparing effects of perioperative full-spectrum cannabis oil in female dogs undergoing mastectomy/OHE. PMC13303699. https://pmc.ncbi.nlm.nih.gov/articles/PMC13303699/
+- A case report of CBD and THC as analgesic therapy in a cat with chronic osteoarthritic pain. PMID 37002652. https://pubmed.ncbi.nlm.nih.gov/37002652/
+
+Note: this list draws substantially on a bibliography supplied by the clinic and compiled from PubMed/PMC. A representative sample (the della Rocca review, the Lejeune CHOP trial, and the 223-case toxicosis study below) was individually opened and verified against the live page while building this tool. The rest follow the same standard, deterministic PubMed/PMC URL pattern — click through and confirm before relying on any single figure clinically.
+
 ## Legal / Regulatory
 
+- Costa Rica: Ley N.º 10113, "Ley del Cannabis para Uso Medicinal y Terapéutico y del Cáñamo para Uso Alimentario e Industrial" (2022). https://pgrweb.go.cr/scij/Busqueda/Normativa/Normas/nrm_texto_completo.aspx?param1=NRTC&nValor1=1&nValor2=96518&nValor3=130412&strTipM=TC
+- Costa Rica: Reglamento del Cannabis para Uso Medicinal y Terapéutico. https://vlex.co.cr/vid/reglamento-cannabis-uso-medicinal-1094373332
+- SENASA — Dirección de Medicamentos Veterinarios. http://www.senasa.go.cr/133-cat-institucion/cat-organizacion/cat-direcciones-nacionales/direccion-de-medicamentos-veterinarios
+- Colegio de Profesionales en Medicina Veterinaria de Costa Rica (CPMVCR). https://colegioveterinarios.or.cr/
 - AVMA. "Cannabis in Veterinary Medicine" report (aph-0326), 2026. avma.org
 - AVMA. "Cannabis use and pets" resource page. avma.org
 - AVMA/JAVMA News (2020). "The hype and hope of veterinary cannabis."
