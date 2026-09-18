@@ -10,24 +10,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #EFF2EA;
-    --panel: #F8FAF5;
-    --sidebar: #E4E9DD;
-    --ink: #1C2420;
-    --ink-soft: #4B5850;
-    --ink-faint: #7C877C;
-    --line: #C9D0BF;
-    --accent: #2F5D4E;
-    --accent-soft: #DCE6DD;
+    --bg: #F3F4FA;
+    --panel: #FFFFFF;
+    --sidebar: #EEF1FB;
+    --ink: #1B2340;
+    --ink-soft: #5A6499;
+    --ink-faint: #8890B5;
+    --line: #D7DBEF;
+    --accent: #4A6CF7;
+    --accent-soft: #E7EBFC;
     --ochre: #8A6A22;
     --ochre-soft: #EFE6CD;
     --caution: #7A3B2E;
     --caution-soft: #F1DFD9;
     --plum: #5B3D63;
     --plum-soft: #E9E1EA;
-    --focus: #2F5D4E;
+    --focus: #4A6CF7;
+    --navy: #1E2A6E;
+    --on-navy: #FFFFFF;
+    --on-navy-soft: #C7CEF2;
+    --on-navy-border: rgba(255,255,255,0.18);
+    --on-navy-fill: rgba(255,255,255,0.12);
     --radius: 4px;
-    --shadow: 0 6px 20px rgba(28,36,32,0.10);
+    --shadow: 0 6px 20px rgba(30,42,110,0.12);
   }
   *{ box-sizing: border-box; }
   body{
@@ -49,33 +54,33 @@
   /* ---------- header ---------- */
   header.top{
     position: sticky; top:0; z-index: 20;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
+    background: var(--navy);
+    border-bottom: 1px solid var(--on-navy-border);
     padding: 14px clamp(16px, 4vw, 40px);
     display: flex; align-items: center; gap: 18px;
   }
   .menu-toggle{
     display:none;
-    background:none; border:1px solid var(--line); border-radius: var(--radius);
-    width:36px; height:36px; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);
+    background:none; border:1px solid var(--on-navy-border); border-radius: var(--radius);
+    width:36px; height:36px; align-items:center; justify-content:center; cursor:pointer; color:var(--on-navy);
     flex-shrink:0;
   }
   .brand{ display:flex; align-items:center; gap:9px; cursor:pointer; flex-shrink:0; }
-  .brand svg.icon{ width:22px; height:22px; color:var(--accent); }
-  .brand-text h1{ font-size: 19px; line-height:1.1; }
-  .brand-text p{ margin:1px 0 0; color:var(--ink-soft); font-size:12px; }
+  .brand svg.icon{ width:22px; height:22px; color:var(--on-navy); }
+  .brand-text h1{ font-size: 19px; line-height:1.1; color:var(--on-navy); }
+  .brand-text p{ margin:1px 0 0; color:var(--on-navy-soft); font-size:12px; }
 
   .search-region{ position: relative; flex:1; max-width: 400px; margin-left: auto; }
   .search-input-wrap{
     display:flex; align-items:center; gap:8px;
-    border:1px solid var(--line); border-radius: var(--radius);
-    background: var(--panel); padding: 8px 12px;
+    border:1px solid var(--on-navy-border); border-radius: var(--radius);
+    background: var(--on-navy-fill); padding: 8px 12px;
   }
-  .search-input-wrap svg.icon{ color: var(--ink-faint); }
+  .search-input-wrap svg.icon{ color: var(--on-navy-soft); }
   .search-input-wrap input{
-    border:none; background:none; outline:none; font:inherit; font-size:14px; color:var(--ink); width:100%;
+    border:none; background:none; outline:none; font:inherit; font-size:14px; color:var(--on-navy); width:100%;
   }
-  .search-input-wrap input::placeholder{ color: var(--ink-faint); }
+  .search-input-wrap input::placeholder{ color: var(--on-navy-soft); }
   .search-results{
     position:absolute; top: calc(100% + 6px); left:0; right:0;
     background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
@@ -96,11 +101,11 @@
 
   .calc-nav-btn{
     display:flex; align-items:center; gap:7px;
-    background: var(--panel); border:1px solid var(--line); border-radius: var(--radius);
-    padding: 8px 13px; font-size:13.5px; font-weight:500; color:var(--ink); cursor:pointer; flex-shrink:0;
+    background: var(--accent); border:none; border-radius: 999px;
+    padding: 9px 16px; font-size:13.5px; font-weight:500; color:#fff; cursor:pointer; flex-shrink:0;
   }
-  .calc-nav-btn svg.icon{ color: var(--accent); }
-  .calc-nav-btn:hover{ border-color:var(--accent); }
+  .calc-nav-btn svg.icon{ color:#fff; }
+  .calc-nav-btn:hover{ filter: brightness(0.93); }
 
   /* ---------- disclaimer ---------- */
   .disclaimer{
@@ -743,6 +748,32 @@
     weightField.appendChild(weightRow);
     form.appendChild(weightField);
 
+    var productGroup = el('div', {class:'calc-field', style:'border-top:1px solid var(--line);padding-top:18px;margin-top:4px;'});
+    productGroup.appendChild(el('label', {text:'Product on hand (optional \u2014 adds an mL dose, liquids only)'}));
+    var productGrid = el('div', {style:'display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;'});
+
+    var mgWrap = el('div');
+    mgWrap.appendChild(el('label', {text:'CBD isolate in bottle (mg)', style:'font-size:12px;font-weight:400;text-transform:none;letter-spacing:normal;color:var(--ink-faint);margin-bottom:4px;'}));
+    var productMgInput = el('input', {type:'number', min:'0', step:'0.1', id:'calcProductMg', placeholder:'e.g. 3000'});
+    mgWrap.appendChild(productMgInput);
+    productGrid.appendChild(mgWrap);
+
+    var potencyWrap = el('div');
+    potencyWrap.appendChild(el('label', {text:'Potency % (optional)', style:'font-size:12px;font-weight:400;text-transform:none;letter-spacing:normal;color:var(--ink-faint);margin-bottom:4px;'}));
+    var potencyInput = el('input', {type:'number', min:'0', max:'100', step:'0.1', id:'calcPotency', placeholder:'blank = 100%'});
+    potencyWrap.appendChild(potencyInput);
+    productGrid.appendChild(potencyWrap);
+
+    productGroup.appendChild(productGrid);
+
+    var volWrap = el('div', {style:'margin-top:10px;'});
+    volWrap.appendChild(el('label', {text:'Bottle volume (mL)', style:'font-size:12px;font-weight:400;text-transform:none;letter-spacing:normal;color:var(--ink-faint);margin-bottom:4px;'}));
+    var volumeInput = el('input', {type:'number', min:'0', step:'0.1', id:'calcVolume', placeholder:'e.g. 30'});
+    volWrap.appendChild(volumeInput);
+    productGroup.appendChild(volWrap);
+
+    form.appendChild(productGroup);
+
     main.appendChild(form);
 
     var resultBox = el('div', {id:'calcResultBox'});
@@ -765,6 +796,9 @@
     speciesSelect.addEventListener('change', function(){ populateConditions(); updateCalcResult(); });
     condSelect.addEventListener('change', updateCalcResult);
     weightInput.addEventListener('input', updateCalcResult);
+    productMgInput.addEventListener('input', updateCalcResult);
+    potencyInput.addEventListener('input', updateCalcResult);
+    volumeInput.addEventListener('input', updateCalcResult);
 
     function updateCalcResult(){
       var box = document.getElementById('calcResultBox');
@@ -792,23 +826,68 @@
       var perDoseLow = low * weightKg, perDoseHigh = high * weightKg;
       var dailyLow = perDoseLow * freq, dailyHigh = perDoseHigh * freq;
 
-      function fmtRange(a,b){
-        a = Math.round(a*10)/10; b = Math.round(b*10)/10;
-        return a === b ? (a + ' mg') : (a + '\u2013' + b + ' mg');
+      function round2(n){ return Math.round(n*100)/100; }
+      function fmtRange(a,b,unit){
+        a = Math.round(a*100)/100; b = Math.round(b*100)/100;
+        return a === b ? (a + ' ' + unit) : (a + '\u2013' + b + ' ' + unit);
       }
 
-      result.appendChild(el('div', {class:'result-figure', text: fmtRange(perDoseLow, perDoseHigh) + ' per dose'}));
-      result.appendChild(el('div', {class:'result-sub', text: weightKg.toFixed(1) + ' kg patient \u00d7 ' + low + (high!==low?('\u2013'+high):'') + ' mg/kg, ' + freq + '\u00d7/day'}));
+      var productMg = parseFloat(productMgInput.value);
+      var volumeMl = parseFloat(volumeInput.value);
+      var potencyRaw = parseFloat(potencyInput.value);
+      var hasProduct = productMg > 0 && volumeMl > 0;
+      var potencyPct = (!isNaN(potencyRaw) && potencyRaw > 0) ? potencyRaw : 100;
+      var concentration = null, effectiveMg = null;
+      if(hasProduct){
+        effectiveMg = productMg * (potencyPct / 100);
+        concentration = effectiveMg / volumeMl;
+      }
 
-      var row1 = el('div', {class:'result-row'});
-      row1.appendChild(el('span', {text:'Per administration'}));
-      row1.appendChild(el('span', {text: fmtRange(perDoseLow, perDoseHigh)}));
-      result.appendChild(row1);
+      if(hasProduct && concentration > 0){
+        var mlPerDoseLow = perDoseLow / concentration, mlPerDoseHigh = perDoseHigh / concentration;
+        var mlDailyLow = dailyLow / concentration, mlDailyHigh = dailyHigh / concentration;
+        result.appendChild(el('div', {class:'result-figure', text: fmtRange(mlPerDoseLow, mlPerDoseHigh, 'mL') + ' per dose'}));
+        result.appendChild(el('div', {class:'result-sub', text: fmtRange(perDoseLow, perDoseHigh, 'mg') + ' \u2014 ' + weightKg.toFixed(1) + ' kg \u00d7 ' + low + (high!==low?('\u2013'+high):'') + ' mg/kg, ' + freq + '\u00d7/day'}));
 
-      var row2 = el('div', {class:'result-row'});
-      row2.appendChild(el('span', {text:'Total per day (' + freq + '\u00d7)'}));
-      row2.appendChild(el('span', {text: fmtRange(dailyLow, dailyHigh)}));
-      result.appendChild(row2);
+        var pRow = el('div', {class:'result-row'});
+        pRow.appendChild(el('span', {text: 'Effective CBD in bottle'}));
+        pRow.appendChild(el('span', {text: round2(effectiveMg) + ' mg (' + productMg + ' mg \u00d7 ' + potencyPct + '%)'}));
+        result.appendChild(pRow);
+
+        var cRow = el('div', {class:'result-row'});
+        cRow.appendChild(el('span', {text: 'Concentration'}));
+        cRow.appendChild(el('span', {text: round2(concentration) + ' mg/mL'}));
+        result.appendChild(cRow);
+
+        var row1 = el('div', {class:'result-row'});
+        row1.appendChild(el('span', {text:'Per administration'}));
+        row1.appendChild(el('span', {text: fmtRange(mlPerDoseLow, mlPerDoseHigh, 'mL') + '  (' + fmtRange(perDoseLow, perDoseHigh, 'mg') + ')'}));
+        result.appendChild(row1);
+
+        var row2 = el('div', {class:'result-row'});
+        row2.appendChild(el('span', {text:'Total per day (' + freq + '\u00d7)'}));
+        row2.appendChild(el('span', {text: fmtRange(mlDailyLow, mlDailyHigh, 'mL') + '  (' + fmtRange(dailyLow, dailyHigh, 'mg') + ')'}));
+        result.appendChild(row2);
+      } else {
+        result.appendChild(el('div', {class:'result-figure', text: fmtRange(perDoseLow, perDoseHigh, 'mg') + ' per dose'}));
+        result.appendChild(el('div', {class:'result-sub', text: weightKg.toFixed(1) + ' kg patient \u00d7 ' + low + (high!==low?('\u2013'+high):'') + ' mg/kg, ' + freq + '\u00d7/day'}));
+
+        var row1b = el('div', {class:'result-row'});
+        row1b.appendChild(el('span', {text:'Per administration'}));
+        row1b.appendChild(el('span', {text: fmtRange(perDoseLow, perDoseHigh, 'mg')}));
+        result.appendChild(row1b);
+
+        var row2b = el('div', {class:'result-row'});
+        row2b.appendChild(el('span', {text:'Total per day (' + freq + '\u00d7)'}));
+        row2b.appendChild(el('span', {text: fmtRange(dailyLow, dailyHigh, 'mg')}));
+        result.appendChild(row2b);
+
+        if(productMg > 0 && !(volumeMl > 0)){
+          var hint = el('div', {class:'result-row'});
+          hint.appendChild(el('span', {text:'Enter a bottle volume (mL) to also see this as a volume to draw up.', style:'font-size:12.5px;color:var(--ink-soft);'}));
+          result.appendChild(hint);
+        }
+      }
 
       if(c.calc.calcNote){
         var note = el('div', {class:'result-row'});
